@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-serif text-ink;
+    font-feature-settings: "onum";
+  }
+
+  h1 { @apply text-4xl md:text-5xl leading-[1.08] tracking-tight font-semibold; }
+  h2 { @apply text-2xl md:text-[1.9rem] leading-tight tracking-tight font-semibold; }
+  h3 { @apply text-lg md:text-xl leading-snug font-semibold; }
+
+  a { @apply underline-offset-4; }
+
+  ::selection { @apply bg-ink text-paper; }
+}
+
+@layer components {
+  .container-content { @apply mx-auto w-full max-w-content px-5 md:px-8; }
+  .container-prose { @apply mx-auto w-full max-w-prose px-5 md:px-8; }
+
+  .rule { @apply border-t border-rule; }
+
+  .link {
+    @apply text-ink underline decoration-rule underline-offset-[6px]
+           decoration-1 transition-colors hover:text-crimson hover:decoration-crimson;
+  }
+
+  .eyebrow {
+    @apply text-[0.72rem] font-medium uppercase tracking-[0.16em] text-ink-mute;
+  }
+
+  .btn {
+    @apply inline-flex items-center gap-2 rounded-none border px-4 py-2.5
+           text-[0.92rem] font-medium leading-none transition-colors
+           focus:outline-none focus-visible:ring-2 focus-visible:ring-crimson focus-visible:ring-offset-2;
+  }
+  .btn-primary {
+    @apply border-ink bg-ink text-paper hover:bg-crimson hover:border-crimson;
+  }
+  .btn-ghost {
+    @apply border-ink text-ink hover:bg-ink hover:text-paper;
+  }
+  .btn-quiet {
+    @apply border-rule text-ink-soft hover:border-ink hover:text-ink;
+  }
+
+  .card {
+    @apply border border-rule bg-paper-card p-6 md:p-7 transition-colors hover:border-ink;
+  }
+
+  .kicker {
+    @apply inline-flex items-center gap-2 text-[0.72rem] font-medium uppercase tracking-[0.16em]
+           text-ink-soft;
+  }
+  .kicker::before {
+    content: "";
+    @apply block h-px w-8 bg-ink-soft;
+  }
+
+  .prose-serif p { @apply font-sans text-ink-soft leading-relaxed; }
+  .prose-serif p + p { @apply mt-4; }
+}

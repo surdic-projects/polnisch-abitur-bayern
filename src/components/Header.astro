@@ -1,0 +1,85 @@
+---
+import { withBase } from "~/lib/url";
+
+interface Props {
+  active?: "home" | "kurs" | "konsulat" | "faq" | "ulotka" | "rejestracja" | "kontakt";
+}
+const { active = "home" } = Astro.props;
+
+const nav = [
+  { href: "/kurs",         label: "Kurs",           key: "kurs" },
+  { href: "/konsulat",     label: "Konsulat",       key: "konsulat" },
+  { href: "/faq",          label: "Pytania",        key: "faq" },
+  { href: "/ulotka",       label: "Ulotka",         key: "ulotka" },
+  { href: "/rejestracja",  label: "Rejestracja",    key: "rejestracja" },
+  { href: "/kontakt",      label: "Kontakt",        key: "kontakt" },
+] as const;
+---
+
+<header class="border-b border-rule bg-paper">
+  <div class="container-content flex items-center justify-between py-4 md:py-5">
+    <a href={withBase("/")} class="flex items-center gap-3 group" aria-label="Strona główna">
+      <span
+        aria-hidden="true"
+        class="block h-5 w-8 border border-ink"
+        style="background: linear-gradient(#fff 50%, #8a1c2b 50%);"
+      ></span>
+      <span class="flex flex-col leading-tight">
+        <span class="font-serif text-[0.98rem] font-semibold tracking-tight">
+          Język polski do Abitur
+        </span>
+        <span class="text-[0.72rem] uppercase tracking-[0.14em] text-ink-mute">
+          Bawaria · Nürnberg–Fürth–Erlangen
+        </span>
+      </span>
+    </a>
+
+    <nav aria-label="Menu główne" class="hidden md:block">
+      <ul class="flex items-center gap-1">
+        {nav.map(({ href, label, key }) => (
+          <li>
+            <a
+              href={withBase(href)}
+              class:list={[
+                "px-3 py-2 text-[0.92rem] transition-colors",
+                active === key
+                  ? "text-ink underline decoration-crimson decoration-2 underline-offset-[10px]"
+                  : "text-ink-soft hover:text-ink",
+              ]}
+              aria-current={active === key ? "page" : undefined}
+            >
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <details class="md:hidden relative">
+      <summary
+        class="list-none inline-flex items-center gap-2 border border-rule px-3 py-2 text-sm cursor-pointer marker:content-none"
+        aria-label="Otwórz menu"
+      >
+        Menu
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </summary>
+      <ul class="absolute right-0 top-full mt-2 min-w-[220px] border border-rule bg-paper-card shadow-sm z-40">
+        {nav.map(({ href, label, key }) => (
+          <li>
+            <a
+              href={withBase(href)}
+              class:list={[
+                "block px-4 py-3 text-sm border-b border-rule last:border-b-0",
+                active === key ? "text-ink font-medium" : "text-ink-soft hover:text-ink",
+              ]}
+            >
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </details>
+  </div>
+</header>

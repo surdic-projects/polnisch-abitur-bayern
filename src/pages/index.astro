@@ -1,0 +1,185 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import { withBase } from "~/lib/url";
+---
+
+<BaseLayout active="home">
+  <!-- Masthead -->
+  <section class="border-b border-rule">
+    <div class="container-content pt-16 pb-20 md:pt-24 md:pb-28">
+      <div class="grid gap-12 md:grid-cols-12">
+        <div class="md:col-span-8">
+          <div class="kicker">Projekt informacyjny · nabór 2026</div>
+
+          <h1 class="mt-6 font-serif text-4xl md:text-6xl leading-[1.02] tracking-tight">
+            Język&nbsp;polski jako
+            <span class="italic text-crimson">spät beginnende Fremdsprache</span>
+            w bawarskiej maturze.
+          </h1>
+
+          <p class="mt-8 max-w-2xl text-lg text-ink-soft leading-relaxed">
+            Dwuletni kurs języka polskiego w bawarskim systemie oświaty, przeznaczony
+            dla uczniów z regionu Nürnberg–Fürth–Erlangen. Prowadzony w klasach 12–13,
+            zakończony możliwością zdawania egzaminu ustnego w ramach niemieckiej matury
+            (Abitur). Kurs jest bezpłatny.
+          </p>
+
+          <div class="mt-10 flex flex-wrap gap-3">
+            <a href={withBase("/rejestracja")} class="btn btn-primary">Zgłoś zainteresowanie</a>
+            <a href={withBase("/kurs")} class="btn btn-ghost">O kursie</a>
+          </div>
+        </div>
+
+        <aside class="md:col-span-4 md:pl-8 md:border-l md:border-rule">
+          <div class="eyebrow">W skrócie</div>
+          <dl class="mt-4 space-y-4 text-sm">
+            <div>
+              <dt class="text-ink-mute">Region</dt>
+              <dd class="mt-1 text-ink">Nürnberg · Fürth · Erlangen</dd>
+            </div>
+            <div>
+              <dt class="text-ink-mute">Czas trwania</dt>
+              <dd class="mt-1 text-ink">4 semestry · klasa 12–13 (Oberstufe)</dd>
+            </div>
+            <div>
+              <dt class="text-ink-mute">Zgłoszenia</dt>
+              <dd class="mt-1 text-ink">Uczniowie klasy 11 (od września 2026)</dd>
+            </div>
+            <div>
+              <dt class="text-ink-mute">Warunek uruchomienia</dt>
+              <dd class="mt-1 text-ink">Min. 15 osób do listopada 2026</dd>
+            </div>
+            <div>
+              <dt class="text-ink-mute">Koszt</dt>
+              <dd class="mt-1 text-ink">Bezpłatny</dd>
+            </div>
+            <div>
+              <dt class="text-ink-mute">Organizator</dt>
+              <dd class="mt-1 text-ink">Bayerisches Staatsministerium für Unterricht und Kultus</dd>
+            </div>
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Overview -->
+  <section class="container-content py-16 md:py-24">
+    <div class="grid gap-12 md:grid-cols-12">
+      <header class="md:col-span-4">
+        <div class="kicker">O projekcie</div>
+        <h2 class="mt-4">Dla kogo powstała ta strona</h2>
+      </header>
+
+      <div class="md:col-span-8 max-w-prose text-ink-soft leading-relaxed space-y-4">
+        <p>
+          Strona informacyjna dotyczy projektu <em>„Kurs języka polskiego do niemieckiej
+          matury dla uczniów z rejonu Nürnberg–Fürth–Erlangen”</em>. Prezentujemy tu
+          informacje merytoryczne oraz kroki potrzebne do zapisania ucznia na dwuletni
+          kurs języka polskiego jako obcego, który umożliwia zdobycie punktów w
+          bawarskiej maturze.
+        </p>
+        <p>
+          Strona jest prowadzona przez grupę rodziców z Norymbergi i okolic.
+          Autorką bloga, na którym pierwotnie ukazały się te materiały, jest
+          <strong>Anna Dębska-Kroener</strong>. Prosimy o kontakt z pytaniami
+          bezpośrednio przez formularz lub adres podany w sekcji
+          <a href={withBase("/kontakt")} class="link">Kontakt</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Three-up: what/who/how -->
+  <section class="border-t border-rule bg-paper-soft">
+    <div class="container-content py-16 md:py-20">
+      <div class="grid gap-6 md:grid-cols-3">
+        <article class="card">
+          <div class="eyebrow">01 — Co to jest</div>
+          <h3 class="mt-3 font-serif">Późno rozpoczynany język obcy</h3>
+          <p class="mt-3 text-sm text-ink-soft leading-relaxed">
+            Kurs funkcjonuje w bawarskim systemie oświaty jako
+            <em>spät beginnende Fremdsprache</em>. Program odpowiada poziomowi
+            innych późno wybieranych języków obcych w bawarskiej maturze.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="eyebrow">02 — Kto może</div>
+          <h3 class="mt-3 font-serif">Uczniowie klas 10–11</h3>
+          <p class="mt-3 text-sm text-ink-soft leading-relaxed">
+            Zapraszamy uczniów mieszkających w Norymberdze lub okolicy,
+            uczęszczających do gimnazjum lub FOS, władających językiem polskim
+            na poziomie co najmniej B1.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="eyebrow">03 — Co dalej</div>
+          <h3 class="mt-3 font-serif">Punkty do Abitur</h3>
+          <p class="mt-3 text-sm text-ink-soft leading-relaxed">
+            Wyniki wchodzą do Block I, a przy opcjonalnym egzaminie ustnym
+            również do Block II. Sposób na formalne wykorzystanie dwujęzyczności
+            w wyniku matury.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="container-content py-16 md:py-24">
+    <div class="grid gap-12 md:grid-cols-12">
+      <header class="md:col-span-4">
+        <div class="kicker">Harmonogram</div>
+        <h2 class="mt-4">Od zgłoszenia do matury</h2>
+        <p class="mt-4 text-ink-soft leading-relaxed">
+          Kurs w Norymberdze zostanie uruchomiony, jeżeli do listopada 2026
+          zgłosi się co najmniej 15 chętnych.
+        </p>
+      </header>
+
+      <ol class="md:col-span-8 space-y-0">
+        {[
+          { year: "2026", when: "wrzesień 2026 – listopad 2026", title: "Zgłoszenie zainteresowania", desc: "Uczniowie klas 11 wypełniają dokument BEKUNDUNG oraz formularz RODO i przesyłają do Konsulatu Generalnego RP w Monachium." },
+          { year: "2026", when: "do listopada 2026", title: "Weryfikacja liczby zgłoszeń", desc: "Warunkiem uruchomienia grupy jest minimum 15 osób. Ministerstwo wskazuje placówkę szkolną na terenie Norymbergi." },
+          { year: "2027", when: "wrzesień 2027 – lato 2029", title: "Kurs (4 semestry)", desc: "Zajęcia w piątki po południu, 3–4 godziny lekcyjne tygodniowo. Program w zakresie późno rozpoczynanego języka obcego." },
+          { year: "2029", when: "matura 2029", title: "Wynik do Block I (i opcjonalnie Block II)", desc: "Wyniki wchodzą do wyniku Abitur; można zdawać opcjonalny egzamin ustny." },
+        ].map((step, i) => (
+          <li class="grid grid-cols-[auto_1fr] gap-6 md:gap-10 py-6 border-t border-rule first:border-t-0 md:border-t">
+            <div>
+              <div class="font-serif text-3xl md:text-4xl text-ink-mute tabular-nums leading-none">
+                {step.year}
+              </div>
+              <div class="mt-1 text-[0.72rem] uppercase tracking-[0.12em] text-ink-faint">
+                {step.when}
+              </div>
+            </div>
+            <div>
+              <h3 class="font-serif">{step.title}</h3>
+              <p class="mt-2 text-ink-soft leading-relaxed">{step.desc}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="border-t border-rule">
+    <div class="container-content py-14 md:py-16 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+      <div class="max-w-2xl">
+        <div class="kicker">Następny krok</div>
+        <h2 class="mt-3 font-serif">Zgłoś zainteresowanie kursem</h2>
+        <p class="mt-3 text-ink-soft leading-relaxed">
+          Zgłoszenia przyjmowane są przez Konsulat Generalny RP w Monachium.
+          Poniżej znajdziesz dokumenty do wypełnienia oraz adres, na który należy je wysłać.
+        </p>
+      </div>
+      <div class="flex gap-3">
+        <a href={withBase("/rejestracja")} class="btn btn-primary">Do rejestracji</a>
+        <a href={withBase("/faq")} class="btn btn-ghost">Pytania i odpowiedzi</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

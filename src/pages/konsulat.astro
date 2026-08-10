@@ -1,0 +1,103 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import { withBase } from "~/lib/url";
+---
+
+<BaseLayout
+  active="konsulat"
+  title="Informacja Konsulatu — Język polski do Abitur — Bawaria"
+>
+  <section class="border-b border-rule">
+    <div class="container-content pt-16 pb-14 md:pt-24 md:pb-16">
+      <div class="kicker">Informacja Konsulatu</div>
+      <h1 class="mt-6 max-w-4xl">
+        Nauczanie języka polskiego w bawarskim systemie szkolnym
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg text-ink-soft leading-relaxed">
+        Nauczanie języka polskiego w bawarskim systemie szkolnym ma oficjalną
+        podstawę i jest przedmiotem współpracy polskich i bawarskich instytucji
+        oświatowych.
+      </p>
+    </div>
+  </section>
+
+  <section class="container-content py-16 md:py-20">
+    <div class="grid gap-12 md:grid-cols-12">
+      <article class="md:col-span-8 max-w-prose prose-serif">
+        <p>
+          Konsulat Generalny RP w Monachium opublikował informacje dotyczące
+          możliwości nauczania języka polskiego w Bawarii, w tym organizacji języka
+          polskiego jako <em>spät beginnende Fremdsprache</em> — późno rozpoczynanego
+          języka obcego, który może być związany z drogą do Abitur.
+        </p>
+        <p>
+          Pełna informacja dotycząca nauczania języka polskiego w Bawarii znajduje
+          się na stronie Ministerstwa Spraw Zagranicznych RP.
+        </p>
+        <div class="mt-6">
+          <a
+            href="https://www.gov.pl/web/niemcy/jezyk-polski---bawaria"
+            target="_blank"
+            rel="noopener"
+            class="btn btn-ghost"
+          >
+            Przejdź do informacji na gov.pl
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M7 17 17 7M8 7h9v9" />
+            </svg>
+          </a>
+        </div>
+      </article>
+
+      <aside class="md:col-span-4 md:pl-8 md:border-l md:border-rule">
+        <div class="eyebrow">Instytucje</div>
+        <ul class="mt-4 space-y-5 text-sm">
+          <li>
+            <div class="text-ink font-medium">Konsulat Generalny RP w Monachium</div>
+            <a
+              href="mailto:monachium.kg.sekretariat@msz.gov.pl"
+              class="link block mt-1 break-all"
+            >
+              monachium.kg.sekretariat@msz.gov.pl
+            </a>
+          </li>
+          <li>
+            <div class="text-ink font-medium">
+              Bayerisches Staatsministerium für Unterricht und Kultus
+            </div>
+            <p class="mt-1 text-ink-mute">
+              Organizator kursu w ramach bawarskiego systemu oświaty.
+            </p>
+          </li>
+          <li>
+            <div class="text-ink font-medium">Ministerstwo Spraw Zagranicznych RP</div>
+            <a
+              href="https://www.gov.pl/web/niemcy/jezyk-polski---bawaria"
+              target="_blank"
+              rel="noopener"
+              class="link block mt-1"
+            >
+              gov.pl — Język polski (Bawaria)
+            </a>
+          </li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="border-t border-rule bg-paper-soft">
+    <div class="container-content py-14 md:py-16 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+      <div class="max-w-2xl">
+        <div class="kicker">Zgłoszenie</div>
+        <h2 class="mt-3 font-serif">
+          Chcesz zgłosić zainteresowanie kursem w Norymberdze i okolicach?
+        </h2>
+        <p class="mt-3 text-ink-soft leading-relaxed">
+          Zgłoszenia uczniów zainteresowanych kursem odbywają się poprzez wysłanie
+          wypełnionego formularza na adres Konsulatu Generalnego RP w Monachium.
+        </p>
+      </div>
+      <a href={withBase("/rejestracja")} class="btn btn-primary">Do rejestracji</a>
+    </div>
+  </section>
+</BaseLayout>

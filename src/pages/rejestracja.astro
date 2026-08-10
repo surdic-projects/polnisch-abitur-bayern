@@ -1,0 +1,109 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  active="rejestracja"
+  title="Rejestracja / Zgłoszenie — Język polski do Abitur — Bawaria"
+>
+  <section class="border-b border-rule">
+    <div class="container-content pt-16 pb-14 md:pt-24 md:pb-16">
+      <div class="kicker">Rejestracja</div>
+      <h1 class="mt-6 max-w-4xl">Zgłoszenie zainteresowania kursem</h1>
+      <p class="mt-6 max-w-2xl text-lg text-ink-soft leading-relaxed">
+        Zgłoszenia uczniów zainteresowanych kursem języka polskiego do matury
+        w danym regionie odbywają się przez przesłanie wypełnionego formularza
+        na adres elektroniczny Konsulatu Generalnego RP w Monachium.
+      </p>
+    </div>
+  </section>
+
+  <section class="container-content py-16 md:py-20">
+    <div class="grid gap-12 md:grid-cols-12">
+      <article class="md:col-span-8 max-w-prose prose-serif">
+        <h2 class="font-serif">Jak zgłosić zainteresowanie</h2>
+
+        <ol class="mt-6 space-y-6 list-none pl-0">
+          <li class="grid grid-cols-[auto_1fr] gap-4">
+            <span class="tabular-nums font-serif text-2xl text-ink-mute leading-none pt-0.5">01</span>
+            <div>
+              <h3 class="font-serif">Pobierz i wypełnij dokument BEKUNDUNG</h3>
+              <p class="mt-1">
+                Formularz udostępniony w związku z organizacją nauczania języka
+                polskiego w Bawarii. Pobierz i zapoznaj się z jego treścią przed
+                wypełnieniem.
+              </p>
+              <a
+                href="https://docs.google.com/document/d/1LZ_K1xkFejwSHDiji96gs2nay2c9FeMk/edit?usp=drive_link&ouid=114917908839007268125&rtpof=true&sd=true"
+                target="_blank"
+                rel="noopener"
+                class="btn btn-quiet mt-3"
+              >
+                Otwórz dokument BEKUNDUNG
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              </a>
+            </div>
+          </li>
+
+          <li class="grid grid-cols-[auto_1fr] gap-4">
+            <span class="tabular-nums font-serif text-2xl text-ink-mute leading-none pt-0.5">02</span>
+            <div>
+              <h3 class="font-serif">Wypełnij formularz RODO</h3>
+              <p class="mt-1">
+                Wymagana zgoda na przetwarzanie danych osobowych ucznia i rodziców
+                — załącz do zgłoszenia.
+              </p>
+              <a
+                href="https://docs.google.com/document/d/1WcxoMiGb5_-48woGvsdshrI3v6s0wdYx/edit?usp=drive_link&ouid=114917908839007268125&rtpof=true&sd=true"
+                target="_blank"
+                rel="noopener"
+                class="btn btn-quiet mt-3"
+              >
+                Otwórz formularz RODO
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              </a>
+            </div>
+          </li>
+
+          <li class="grid grid-cols-[auto_1fr] gap-4">
+            <span class="tabular-nums font-serif text-2xl text-ink-mute leading-none pt-0.5">03</span>
+            <div>
+              <h3 class="font-serif">Wyślij dokumenty do Konsulatu</h3>
+              <p class="mt-1">
+                Prześlij oba dokumenty (BEKUNDUNG oraz RODO) na adres elektroniczny
+                Konsulatu Generalnego RP w Monachium:
+              </p>
+              <a
+                href="mailto:monachium.kg.sekretariat@msz.gov.pl"
+                class="link mt-2 inline-block font-medium"
+              >
+                monachium.kg.sekretariat@msz.gov.pl
+              </a>
+            </div>
+          </li>
+        </ol>
+      </article>
+
+      <aside class="md:col-span-4 md:pl-8 md:border-l md:border-rule">
+        <div class="eyebrow">Termin i warunki</div>
+        <ul class="mt-4 space-y-4 text-sm">
+          <li>
+            <div class="text-ink font-medium">Termin zgłoszeń</div>
+            <p class="mt-1 text-ink-mute">Do <strong>listopada 2026</strong>.</p>
+          </li>
+          <li>
+            <div class="text-ink font-medium">Warunek uruchomienia</div>
+            <p class="mt-1 text-ink-mute">
+              Minimum <strong>15 osób</strong> — wtedy ministerstwo wskazuje szkołę
+              w Norymberdze.
+            </p>
+          </li>
+          <li>
+            <div class="text-ink font-medium">Start zajęć</div>
+            <p class="mt-1 text-ink-mute">Rok szkolny <strong>2027/2028</strong>.</p>
+          </li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>

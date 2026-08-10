@@ -1,0 +1,93 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import { withBase } from "~/lib/url";
+---
+
+<BaseLayout
+  active="kurs"
+  title="Kurs — Język polski do niemieckiej matury (Abitur) — Bawaria"
+>
+  <section class="border-b border-rule">
+    <div class="container-content pt-16 pb-14 md:pt-24 md:pb-16">
+      <div class="kicker">Kurs</div>
+      <h1 class="mt-6 max-w-4xl">
+        Późno rozpoczynany język obcy w bawarskiej maturze — na przykładzie języka polskiego.
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg text-ink-soft leading-relaxed">
+        Kurs języka polskiego jako obcego funkcjonuje w bawarskim systemie oświaty
+        w ramach tzw. <em>spät beginnende Fremdsprache</em>. Od kilku lat prowadzony
+        jest w Monachium. W roku szkolnym <strong>2027/2028</strong> możliwe jest
+        uruchomienie nowego kursu w Norymberdze.
+      </p>
+    </div>
+  </section>
+
+  <section class="container-content py-16 md:py-20">
+    <div class="grid gap-12 md:grid-cols-12">
+      <aside class="md:col-span-4">
+        <div class="eyebrow">Podstawowe informacje</div>
+        <dl class="mt-4 divide-y divide-rule border-y border-rule">
+          <div class="py-3 flex justify-between gap-6">
+            <dt class="text-ink-mute text-sm">Poziom w systemie</dt>
+            <dd class="text-ink text-sm text-right">Spät beginnende Fremdsprache</dd>
+          </div>
+          <div class="py-3 flex justify-between gap-6">
+            <dt class="text-ink-mute text-sm">Długość</dt>
+            <dd class="text-ink text-sm text-right">4 semestry (2 lata)</dd>
+          </div>
+          <div class="py-3 flex justify-between gap-6">
+            <dt class="text-ink-mute text-sm">Klasa startowa</dt>
+            <dd class="text-ink text-sm text-right">Klasa 12 (Oberstufe)</dd>
+          </div>
+          <div class="py-3 flex justify-between gap-6">
+            <dt class="text-ink-mute text-sm">Wymagany poziom PL</dt>
+            <dd class="text-ink text-sm text-right">min. B1 (zalecane B2)</dd>
+          </div>
+          <div class="py-3 flex justify-between gap-6">
+            <dt class="text-ink-mute text-sm">Egzamin ustny</dt>
+            <dd class="text-ink text-sm text-right">Opcjonalny</dd>
+          </div>
+          <div class="py-3 flex justify-between gap-6">
+            <dt class="text-ink-mute text-sm">Koszt</dt>
+            <dd class="text-ink text-sm text-right">Bezpłatny</dd>
+          </div>
+        </dl>
+      </aside>
+
+      <article class="md:col-span-8 prose-serif max-w-prose">
+        <h2 class="font-serif">Charakterystyka kursu</h2>
+        <p>
+          Kurs trwa 4 semestry (dwa lata) i rozpoczyna się w klasie 12 tzw. Oberstufe.
+          Ma formę cotygodniowych zajęć trwających kilka godzin lekcyjnych. Program
+          kursu odpowiada poziomowi innych późno wybranych języków obcych w bawarskim
+          systemie matury.
+        </p>
+        <p>
+          Po ukończeniu kursu istnieje możliwość zdawania egzaminu ustnego z języka
+          polskiego w ramach niemieckiej matury. Egzamin jest opcjonalny — można
+          poprzestać na samym dwuletnim kursie.
+        </p>
+
+        <h2 class="font-serif mt-10">Dlaczego warto</h2>
+        <p>
+          Kurs języka polskiego do niemieckiej matury to praktyczna droga wykorzystania
+          dwujęzyczności lub dobrej znajomości języka rodziców jako formalnie uznanego
+          przedmiotu szkolnego, wchodzącego do wyniku Abitur.
+        </p>
+
+        <h2 class="font-serif mt-10">Dla kogo</h2>
+        <p>
+          Zapraszamy uczniów, którzy planują zdawać niemiecką maturę, mieszkają
+          w Norymberdze lub okolicach, władają językiem ojczystym na poziomie
+          co najmniej <strong>B1</strong> i uczęszczają do klasy 10 lub 11 gimnazjum
+          albo FOS.
+        </p>
+
+        <div class="mt-10 flex flex-wrap gap-3">
+          <a href={withBase("/rejestracja")} class="btn btn-primary">Przejdź do rejestracji</a>
+          <a href={withBase("/faq")} class="btn btn-ghost">Zobacz najczęściej zadawane pytania</a>
+        </div>
+      </article>
+    </div>
+  </section>
+</BaseLayout>

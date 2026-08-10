@@ -1,0 +1,39 @@
+---
+import { withBase } from "~/lib/url";
+
+interface Props { q: string; a: string; index: number; }
+const { q, a, index } = Astro.props;
+const num = String(index + 1).padStart(2, "0");
+
+// Rewrite in-content absolute links (href="/foo") so they respect the
+// deploy base path — needed because FAQ answers are authored as HTML strings
+// in src/data/faq.ts and can't call withBase() themselves.
+const answerHtml = a.replace(/href="(\/[^"#][^"]*)"/g, (_m, p) => `href="${withBase(p)}"`);
+---
+
+<details class="group border-t border-rule py-5 md:py-6">
+  <summary
+    class="list-none marker:content-none flex items-start justify-between gap-6 cursor-pointer select-none"
+  >
+    <div class="flex items-baseline gap-5 md:gap-8">
+      <span class="text-[0.78rem] tabular-nums text-ink-mute pt-1">{num}</span>
+      <span class="font-serif text-lg md:text-xl leading-snug text-ink group-hover:text-crimson transition-colors">
+        {q}
+      </span>
+    </div>
+    <span
+      aria-hidden="true"
+      class="mt-1.5 h-4 w-4 shrink-0 border-t-2 border-r-2 border-ink-soft rotate-[135deg] group-open:rotate-[315deg] transition-transform"
+    ></span>
+  </summary>
+  <div
+    class="mt-4 md:mt-5 pl-0 md:pl-16 text-ink-soft leading-relaxed
+           [&_p]:mt-3 [&_p:first-child]:mt-0
+           [&_h4]:font-sans [&_h4]:text-sm [&_h4]:uppercase [&_h4]:tracking-[0.12em] [&_h4]:text-ink [&_h4]:mt-6 [&_h4]:mb-1
+           [&_ul]:mt-3 [&_ul]:space-y-1.5 [&_ul]:list-disc [&_ul]:pl-5
+           [&_a]:underline [&_a]:decoration-rule [&_a]:underline-offset-4 [&_a]:hover:text-crimson [&_a]:hover:decoration-crimson
+           [&_strong]:text-ink [&_strong]:font-semibold
+           [&_em]:text-ink [&_em]:italic"
+    set:html={answerHtml}
+  />
+</details>

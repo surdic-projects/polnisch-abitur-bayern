@@ -1,0 +1,54 @@
+---
+import { withBase } from "~/lib/url";
+const year = new Date().getFullYear();
+---
+
+<footer class="mt-24 border-t border-rule bg-paper-soft">
+  <div class="container-content py-10 md:py-14">
+    <div class="grid gap-8 md:grid-cols-3">
+      <div>
+        <div class="font-serif text-lg font-semibold">Język polski do Abitur</div>
+        <p class="mt-2 text-sm text-ink-soft leading-relaxed max-w-sm">
+          Strona informacyjna dotycząca kursu języka polskiego jako
+          <em>spät beginnende Fremdsprache</em> w bawarskim systemie oświaty,
+          dla uczniów z regionu Nürnberg–Fürth–Erlangen.
+        </p>
+      </div>
+
+      <div>
+        <div class="eyebrow">Nawigacja</div>
+        <ul class="mt-3 space-y-1.5 text-sm">
+          <li><a href={withBase("/kurs")} class="link">Kurs</a></li>
+          <li><a href={withBase("/konsulat")} class="link">Informacja Konsulatu</a></li>
+          <li><a href={withBase("/faq")} class="link">Pytania i odpowiedzi</a></li>
+          <li><a href={withBase("/ulotka")} class="link">Ulotka kursu</a></li>
+          <li><a href={withBase("/rejestracja")} class="link">Rejestracja / Zgłoszenie</a></li>
+          <li><a href={withBase("/kontakt")} class="link">Kontakt</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="eyebrow">Kontakt oficjalny</div>
+        <ul class="mt-3 space-y-2 text-sm text-ink-soft">
+          <li>
+            Konsulat Generalny RP w Monachium<br />
+            <a href="mailto:monachium.kg.sekretariat@msz.gov.pl" class="link">
+              monachium.kg.sekretariat@msz.gov.pl
+            </a>
+          </li>
+          <li>
+            Instagram:
+            <a href="https://www.instagram.com/polnisch_abi/" target="_blank" rel="noopener" class="link">
+              @polnisch_abi
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-10 pt-6 border-t border-rule text-xs text-ink-mute flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+      <div>© {year} — Projekt informacyjny grupy rodziców z Norymbergi i okolic. Autorka: Anna Dębska-Kroener.</div>
+      <div>Nie jest to strona oficjalna urzędu ani ministerstwa.</div>
+    </div>
+  </div>
+</footer>

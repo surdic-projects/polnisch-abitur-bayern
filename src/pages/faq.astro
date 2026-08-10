@@ -1,0 +1,31 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import FaqItem from "~/components/FaqItem.astro";
+import { FAQ } from "~/data/faq";
+import { withBase } from "~/lib/url";
+---
+
+<BaseLayout
+  active="faq"
+  title="Pytania i odpowiedzi — Język polski do Abitur — Bawaria"
+>
+  <section class="border-b border-rule">
+    <div class="container-content pt-16 pb-14 md:pt-24 md:pb-16">
+      <div class="kicker">Pytania i odpowiedzi</div>
+      <h1 class="mt-6 max-w-3xl">Najczęściej zadawane pytania</h1>
+      <p class="mt-6 max-w-2xl text-lg text-ink-soft leading-relaxed">
+        Odpowiedzi na najczęstsze pytania dotyczące kursu języka polskiego jako
+        <em>spät beginnende Fremdsprache</em> oraz możliwości zdawania z niego matury.
+        Jeżeli nie znajdujesz tu odpowiedzi na swoje pytanie, napisz do nas przez
+        <a href={withBase("/kontakt")} class="link">formularz kontaktowy</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="container-content py-14 md:py-20">
+    <div class="max-w-3xl mx-auto">
+      {FAQ.map((item, i) => <FaqItem q={item.q} a={item.a} index={i} />)}
+      <div class="border-t border-rule"></div>
+    </div>
+  </section>
+</BaseLayout>
