@@ -32,19 +32,13 @@ jobs:
       - name: Install
         run: npm ci
 
-      - name: Configure Pages
-        id: pages
-        uses: actions/configure-pages@v5
-
       - name: Build
         env:
-          # Astro reads these in astro.config.mjs and produces links with the
-          # right base path for the specific Pages URL (project vs user page,
-          # custom domain, etc.). No manual editing needed.
-          # For a user/org page (base_path is empty) Astro needs `/`.
-          # For a project page it's `/<repo>` — Astro normalizes internally.
-          SITE: ${{ steps.pages.outputs.origin }}
-          BASE: ${{ steps.pages.outputs.base_path == '' && '/' || steps.pages.outputs.base_path }}
+          # Custom domain serves at the site root. Do not use configure-pages
+          # base_path: for project repos it is still `/<repo>`, which breaks
+          # asset URLs on the custom domain (e.g. /polnisch-abitur-bayern/...).
+          SITE: https://polnisch-abitur-bayern.de
+          BASE: /
         run: npm run build
 
       - name: Upload artifact
