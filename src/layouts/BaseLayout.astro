@@ -9,18 +9,20 @@ import Footer from "~/components/Footer.astro";
 interface Props {
   title?: string;
   description?: string;
-  active?: "home" | "kurs" | "konsulat" | "faq" | "ulotka" | "rejestracja" | "kontakt";
+  lang?: string;
+  active?: "home" | "kurs" | "konsulat" | "faq" | "ulotka" | "rejestracja" | "kontakt" | "impressum";
 }
 
 const {
   title = "Język polski do niemieckiej matury (Abitur) — Bawaria",
   description = "Kurs języka polskiego jako spät beginnende Fremdsprache dla uczniów z regionu Nürnberg–Fürth–Erlangen. Projekt informacyjny grupy rodziców z Norymbergi.",
+  lang = "pl",
   active = "home",
 } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="pl">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />

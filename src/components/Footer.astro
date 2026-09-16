@@ -1,6 +1,8 @@
 ---
 import { withBase } from "~/lib/url";
+import { CONTACT_EMAIL, CONTACT_MAILTO } from "~/data/contact";
 const year = new Date().getFullYear();
+const surdicLogo = withBase("/surdic-logo.svg");
 ---
 
 <footer class="mt-24 border-t border-rule bg-paper-soft">
@@ -28,12 +30,11 @@ const year = new Date().getFullYear();
       </div>
 
       <div>
-        <div class="eyebrow">Kontakt oficjalny</div>
+        <div class="eyebrow">Kontakt</div>
         <ul class="mt-3 space-y-2 text-sm text-ink-soft">
           <li>
-            Konsulat Generalny RP w Monachium<br />
-            <a href="mailto:monachium.kg.sekretariat@msz.gov.pl" class="link">
-              monachium.kg.sekretariat@msz.gov.pl
+            <a href={CONTACT_MAILTO} class="link break-all">
+              {CONTACT_EMAIL}
             </a>
           </li>
           <li>
@@ -45,10 +46,31 @@ const year = new Date().getFullYear();
         </ul>
       </div>
     </div>
+  </div>
 
-    <div class="mt-10 pt-6 border-t border-rule text-xs text-ink-mute flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-      <div>© {year} — Projekt informacyjny grupy rodziców z Norymbergi i okolic. Autorka: Anna Dębska-Kroener.</div>
-      <div>Nie jest to strona oficjalna urzędu ani ministerstwa.</div>
+  <div class="border-t border-rule">
+    <div class="container-content py-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <p class="text-xs text-ink-mute leading-relaxed">
+        © {year} Anna Dębska-Kroener · nie jest to strona oficjalna urzędu ani ministerstwa.
+      </p>
+      <div class="flex items-center gap-4 shrink-0">
+        <a
+          href={withBase("/impressum")}
+          class="text-xs text-ink-mute hover:text-ink transition-colors"
+        >
+          Impressum
+        </a>
+        <span aria-hidden="true" class="block h-3 w-px bg-rule"></span>
+        <a
+          href="https://surdic.com"
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-2 text-ink-mute hover:text-ink transition-colors"
+        >
+          <img src={surdicLogo} alt="" width="12" height="13" class="h-3.5 w-auto" />
+          <span class="text-xs">Surdic IT</span>
+        </a>
+      </div>
     </div>
   </div>
 </footer>

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
+import { CONTACT_EMAIL, CONTACT_MAILTO } from "~/data/contact";
 ---
 
 <BaseLayout
@@ -13,7 +14,7 @@ import BaseLayout from "~/layouts/BaseLayout.astro";
       <p class="mt-6 max-w-2xl text-lg text-ink-soft leading-relaxed">
         Zgłoszenia uczniów zainteresowanych kursem języka polskiego do matury
         w danym regionie odbywają się przez przesłanie wypełnionego formularza
-        na adres elektroniczny Konsulatu Generalnego RP w Monachium.
+        na adres e-mail.
       </p>
     </div>
   </section>
@@ -68,16 +69,15 @@ import BaseLayout from "~/layouts/BaseLayout.astro";
           <li class="grid grid-cols-[auto_1fr] gap-4">
             <span class="tabular-nums font-serif text-2xl text-ink-mute leading-none pt-0.5">03</span>
             <div>
-              <h3 class="font-serif">Wyślij dokumenty do Konsulatu</h3>
+              <h3 class="font-serif">Wyślij dokumenty</h3>
               <p class="mt-1">
-                Prześlij oba dokumenty (BEKUNDUNG oraz RODO) na adres elektroniczny
-                Konsulatu Generalnego RP w Monachium:
+                Prześlij oba dokumenty (BEKUNDUNG oraz RODO) na adres e-mail:
               </p>
               <a
-                href="mailto:monachium.kg.sekretariat@msz.gov.pl"
+                href={CONTACT_MAILTO}
                 class="link mt-2 inline-block font-medium"
               >
-                monachium.kg.sekretariat@msz.gov.pl
+                {CONTACT_EMAIL}
               </a>
             </div>
           </li>

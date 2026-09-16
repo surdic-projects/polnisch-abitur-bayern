@@ -1,0 +1,106 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import { CONTACT_EMAIL, CONTACT_MAILTO } from "~/data/contact";
+---
+
+<BaseLayout
+  active="impressum"
+  lang="de"
+  title="Impressum — Język polski do Abitur — Bawaria"
+  description="Impressum gemäß § 5 DDG. Angaben zur Verantwortlichen dieser Website."
+>
+  <section class="border-b border-rule">
+    <div class="container-content pt-16 pb-14 md:pt-24 md:pb-16">
+      <div class="kicker">Rechtliches</div>
+      <h1 class="mt-6 max-w-3xl">Impressum</h1>
+      <p class="mt-6 max-w-2xl text-lg text-ink-soft leading-relaxed">
+        Angaben gemäß § 5 DDG
+      </p>
+    </div>
+  </section>
+
+  <section class="container-content py-16 md:py-20">
+    <div class="max-w-prose space-y-12 text-ink-soft leading-relaxed">
+      <div>
+        <h2 class="font-serif text-ink">Verantwortlich für diese Website</h2>
+        <address class="mt-4 not-italic space-y-1">
+          <div class="text-ink font-medium">Anna Debska-Kroener</div>
+          <div>Meiersberg 22</div>
+          <div>91452 Wilhermsdorf</div>
+          <div>Deutschland</div>
+          <div class="pt-3">
+            E-Mail:
+            <a href={CONTACT_MAILTO} class="link break-all">{CONTACT_EMAIL}</a>
+          </div>
+        </address>
+      </div>
+
+      <div>
+        <h2 class="font-serif text-ink">Über diese Website</h2>
+        <p class="mt-4">
+          Diese Website informiert über das geplante Angebot eines Polnischkurses
+          als spät beginnende Fremdsprache für Schülerinnen und Schüler im Raum
+          Nürnberg–Fürth–Erlangen.
+        </p>
+        <p class="mt-4">
+          Die Website wird privat und unabhängig betrieben.
+        </p>
+        <p class="mt-4">
+          Das Projekt wird durch das Generalkonsulat der Republik Polen in München
+          unterstützt. Die Website ist jedoch keine offizielle Website des
+          Generalkonsulats der Republik Polen in München und keine Website des
+          Bayerischen Staatsministeriums für Unterricht und Kultus.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="font-serif text-ink">Haftung für Inhalte</h2>
+        <p class="mt-4">
+          Die Inhalte dieser Website werden mit größtmöglicher Sorgfalt erstellt.
+          Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann
+          jedoch keine Gewähr übernommen werden.
+        </p>
+        <p class="mt-4">
+          Verbindliche Auskünfte zu den schulrechtlichen Voraussetzungen, zur
+          Durchführung des Unterrichts sowie zu den jeweiligen Prüfungsbedingungen
+          erteilen ausschließlich die zuständigen staatlichen bzw. schulischen Stellen.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="font-serif text-ink">Haftung für externe Links</h2>
+        <p class="mt-4">
+          Diese Website enthält Links zu externen Websites Dritter. Auf deren
+          Inhalte haben wir keinen Einfluss.
+        </p>
+        <p class="mt-4">
+          Für die Inhalte der verlinkten Seiten ist grundsätzlich der jeweilige
+          Anbieter verantwortlich. Zum Zeitpunkt der Verlinkung wurden die
+          externen Inhalte auf mögliche Rechtsverstöße überprüft. Eine permanente
+          Kontrolle der verlinkten Seiten ist ohne konkrete Anhaltspunkte für eine
+          Rechtsverletzung nicht zumutbar.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="font-serif text-ink">Urheberrecht</h2>
+        <p class="mt-4">
+          Die auf dieser Website veröffentlichten Texte, Inhalte und
+          Gestaltungselemente unterliegen, soweit nicht anders angegeben, dem
+          Urheberrecht.
+        </p>
+        <p class="mt-4">
+          Eine Vervielfältigung, Bearbeitung oder Weiterveröffentlichung von
+          Inhalten dieser Website bedarf der vorherigen Zustimmung des jeweiligen
+          Rechteinhabers.
+        </p>
+        <p class="mt-4">
+          Soweit Inhalte von Dritten stammen, liegen die Rechte bei den jeweiligen
+          Rechteinhabern.
+        </p>
+      </div>
+
+      <p class="text-sm text-ink-mute">Stand: 09/2026</p>
+    </div>
+  </section>
+</BaseLayout>
