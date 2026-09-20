@@ -1,7 +1,8 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import { withBase } from "~/lib/url";
-const flyerHref = withBase("/ulotka.png");
+const flyerImgHref = withBase("/ulotka.png");
+const flyerPdfHref = withBase("/ulotka.pdf");
 ---
 
 <BaseLayout
@@ -14,19 +15,19 @@ const flyerHref = withBase("/ulotka.png");
       <h1 class="mt-6 max-w-4xl">Podstawowe informacje — do wydruku i rozpowszechnienia</h1>
       <p class="mt-6 max-w-2xl text-lg text-ink-soft leading-relaxed">
         Jednostronicowa ulotka informacyjna o projekcie
-        <em>„Polnisch als Fremdsprache für die Oberstufe in Nürnberg”</em>.
+        <em>„Polnisch als spät beginnende Fremdsprache für die Oberstufe in Nürnberg”</em>.
         Można ją pobrać, wydrukować i przekazać osobom, którym może być pomocna —
         w szkołach, w organizacjach polonijnych lub wśród znajomych.
       </p>
 
       <div class="mt-8 flex flex-wrap gap-3">
-        <a href={flyerHref} download class="btn btn-primary">
-          Pobierz ulotkę (PNG)
+        <a href={flyerPdfHref} download class="btn btn-primary">
+          Pobierz ulotkę (PDF)
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M12 3v12M6 11l6 6 6-6M4 21h16" />
           </svg>
         </a>
-        <a href={flyerHref} target="_blank" rel="noopener" class="btn btn-ghost">
+        <a href={flyerPdfHref} target="_blank" rel="noopener" class="btn btn-ghost">
           Otwórz w nowej karcie
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M7 17 17 7M8 7h9v9" />
@@ -40,15 +41,15 @@ const flyerHref = withBase("/ulotka.png");
     <div class="grid gap-12 md:grid-cols-12">
       <figure class="md:col-span-8">
         <a
-          href={flyerHref}
+          href={flyerPdfHref}
           target="_blank"
           rel="noopener"
           class="block border border-rule bg-paper-card p-3 md:p-4 hover:border-ink transition-colors"
-          aria-label="Otwórz pełnowymiarową wersję ulotki"
+          aria-label="Otwórz pełnowymiarową wersję ulotki (PDF)"
         >
           <img
-            src={flyerHref}
-            alt="Ulotka projektu: Polnisch als Fremdsprache für die Oberstufe in Nürnberg — informacje w języku polskim i niemieckim, adresowane do uczniów klas 9. i 10. mających polskie korzenie."
+            src={flyerImgHref}
+            alt="Ulotka projektu: Polnisch als spät beginnende Fremdsprache für die Oberstufe in Nürnberg — informacje w języku polskim i niemieckim, adresowane do uczniów, którzy we wrześniu 2026 zaczynają 11. klasę."
             width="1748"
             height="2480"
             loading="lazy"
@@ -56,7 +57,7 @@ const flyerHref = withBase("/ulotka.png");
           />
         </a>
         <figcaption class="mt-3 text-sm text-ink-mute">
-          Kliknij ulotkę, aby otworzyć pełny rozmiar.
+          Kliknij ulotkę, aby otworzyć wersję PDF do wydruku.
         </figcaption>
       </figure>
 
@@ -64,8 +65,8 @@ const flyerHref = withBase("/ulotka.png");
         <div class="eyebrow">Co znajdziesz w ulotce</div>
         <ul class="mt-4 space-y-3 text-sm text-ink-soft leading-relaxed list-disc pl-5">
           <li>Krótki opis projektu (PL / DE).</li>
-          <li>Dla kogo skierowany jest kurs — uczniowie 9. i 10. klasy z polskimi korzeniami.</li>
-          <li>Korzyści: więcej punktów do Abitur, rozwój znajomości języka polskiego.</li>
+          <li>Dla kogo: uczniowie, którzy we wrześniu 2026 zaczynają 11. klasę bawarskiego gimnazjum i mają polskie korzenie lub znają już język polski.</li>
+          <li>Planowany kurs od 12. klasy (rok szkolny 2027/2028) — dodatkowe punkty do Abitur i rozwój znajomości języka polskiego.</li>
           <li>Kod QR z odnośnikiem do strony informacyjnej projektu.</li>
         </ul>
 
