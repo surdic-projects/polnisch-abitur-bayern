@@ -33,7 +33,8 @@ const answerHtml = a.replace(/href="(\/[^"#][^"]*)"/g, (_m, p) => `href="${withB
            [&_ul]:mt-3 [&_ul]:space-y-1.5 [&_ul]:list-disc [&_ul]:pl-5
            [&_a]:underline [&_a]:decoration-rule [&_a]:underline-offset-4 [&_a]:hover:text-crimson [&_a]:hover:decoration-crimson
            [&_strong]:text-ink [&_strong]:font-semibold
-           [&_em]:text-ink [&_em]:italic"
+           [&_em]:text-ink [&_em]:italic
+           [&_sup]:text-[0.7em] [&_sup]:text-ink-mute [&_sup]:whitespace-nowrap [&_sup_a]:no-underline"
     set:html={answerHtml}
   />
 </details>

@@ -2,13 +2,12 @@
 import { withBase } from "~/lib/url";
 
 interface Props {
-  active?: "home" | "kurs" | "konsulat" | "faq" | "ulotka" | "rejestracja" | "kontakt" | "impressum";
+  active?: "home" | "kurs" | "faq" | "ulotka" | "rejestracja" | "kontakt" | "impressum";
 }
 const { active = "home" } = Astro.props;
 
 const nav = [
   { href: "/kurs",         label: "Kurs",           key: "kurs" },
-  { href: "/konsulat",     label: "Konsulat",       key: "konsulat" },
   { href: "/faq",          label: "Pytania",        key: "faq" },
   { href: "/ulotka",       label: "Ulotka",         key: "ulotka" },
   { href: "/rejestracja",  label: "Rejestracja",    key: "rejestracja" },

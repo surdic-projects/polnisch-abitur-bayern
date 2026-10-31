@@ -18,7 +18,7 @@ import { withBase } from "~/lib/url";
           </h1>
 
           <p class="mt-8 max-w-2xl text-lg text-ink-soft leading-relaxed">
-            Dwuletni kurs języka polskiego w bawarskim systemie oświaty, przeznaczony
+            Kurs języka polskiego jako obcego w bawarskim systemie oświaty, przeznaczony
             dla uczniów z regionu Nürnberg–Fürth–Erlangen. Prowadzony w klasach 12–13,
             zakończony możliwością zdawania egzaminu ustnego w ramach niemieckiej matury
             (Abitur). Kurs jest bezpłatny.
@@ -43,7 +43,7 @@ import { withBase } from "~/lib/url";
             </div>
             <div>
               <dt class="text-ink-mute">Zgłoszenia</dt>
-              <dd class="mt-1 text-ink">Uczniowie klasy 11 (od września 2026)</dd>
+              <dd class="mt-1 text-ink">Uczniowie klas 10–11 (od września 2026)</dd>
             </div>
             <div>
               <dt class="text-ink-mute">Warunek uruchomienia</dt>
@@ -77,12 +77,13 @@ import { withBase } from "~/lib/url";
           matury dla uczniów z rejonu Nürnberg–Fürth–Erlangen”</em>. Prezentujemy tu
           informacje merytoryczne oraz kroki potrzebne do zapisania ucznia na dwuletni
           kurs języka polskiego jako obcego, który umożliwia zdobycie punktów w
-          bawarskiej maturze.
+          bawarskiej maturze. Kurs jest częścią oferty Kultusministerium
+          (LehrplanPLUS). Oferta może także objąć uczniów z klasy 11, jeśli
+          będzie zainteresowanie.
         </p>
         <p>
           Strona jest prowadzona przez grupę rodziców z Norymbergi i okolic.
-          Autorką bloga, na którym pierwotnie ukazały się te materiały, jest
-          <strong>Anna Dębska-Kroener</strong>. Prosimy o kontakt z pytaniami
+          Prosimy o kontakt z pytaniami
           bezpośrednio przez formularz lub adres podany w sekcji
           <a href={withBase("/kontakt")} class="link">Kontakt</a>.
         </p>
@@ -110,7 +111,8 @@ import { withBase } from "~/lib/url";
           <p class="mt-3 text-sm text-ink-soft leading-relaxed">
             Zapraszamy uczniów mieszkających w Norymberdze lub okolicy,
             uczęszczających do gimnazjum lub FOS, władających językiem polskim
-            na poziomie co najmniej B1.
+            na poziomie co najmniej A2. Na kolejne kursy zbieramy zgłoszenia
+            od klas 6–9.
           </p>
         </article>
 
@@ -135,15 +137,16 @@ import { withBase } from "~/lib/url";
         <h2 class="mt-4">Od zgłoszenia do matury</h2>
         <p class="mt-4 text-ink-soft leading-relaxed">
           Kurs w Norymberdze zostanie uruchomiony, jeżeli do listopada 2026
-          zgłosi się co najmniej 15 chętnych.
+          zgłosi się co najmniej 15 chętnych, ale ostateczną decyzję podejmuje
+          Kultusministerium.
         </p>
       </header>
 
       <ol class="md:col-span-8 space-y-0">
         {[
-          { year: "2026", when: "wrzesień 2026 – listopad 2026", title: "Zgłoszenie zainteresowania", desc: "Uczniowie klas 11 wypełniają dokument BEKUNDUNG oraz formularz RODO i przesyłają na adres e-mail podany w sekcji rejestracji." },
+          { year: "2026", when: "wrzesień 2026 – listopad 2026", title: "Zgłoszenie zainteresowania", desc: "Uczniowie wypełniają dokument BEKUNDUNG (wraz ze stroną Datenschutz) i przesyłają na adres e-mail podany w sekcji rejestracji." },
           { year: "2026", when: "do listopada 2026", title: "Weryfikacja liczby zgłoszeń", desc: "Warunkiem uruchomienia grupy jest minimum 15 osób. Ministerstwo wskazuje placówkę szkolną na terenie Norymbergi." },
-          { year: "2027", when: "wrzesień 2027 – lato 2029", title: "Kurs (4 semestry)", desc: "Zajęcia w piątki po południu, 3–4 godziny lekcyjne tygodniowo. Program w zakresie późno rozpoczynanego języka obcego." },
+          { year: "2027", when: "wrzesień 2027 – lato 2029", title: "Kurs (4 semestry)", desc: `Zajęcia w dzień powszedni po południu, 3 godziny lekcyjne tygodniowo. Program w zakresie późno rozpoczynanego języka obcego, szczegółowe informacje w zakładce <a href="${withBase("/faq")}" class="link">Pytania</a>.` },
           { year: "2029", when: "matura 2029", title: "Wynik do Block I (i opcjonalnie Block II)", desc: "Wyniki wchodzą do wyniku Abitur; można zdawać opcjonalny egzamin ustny." },
         ].map((step, i) => (
           <li class="grid grid-cols-[auto_1fr] gap-6 md:gap-10 py-6 border-t border-rule first:border-t-0 md:border-t">
@@ -157,7 +160,7 @@ import { withBase } from "~/lib/url";
             </div>
             <div>
               <h3 class="font-serif">{step.title}</h3>
-              <p class="mt-2 text-ink-soft leading-relaxed">{step.desc}</p>
+              <p class="mt-2 text-ink-soft leading-relaxed" set:html={step.desc} />
             </div>
           </li>
         ))}

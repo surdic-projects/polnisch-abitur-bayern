@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import FaqItem from "~/components/FaqItem.astro";
-import { FAQ } from "~/data/faq";
+import { FAQ, FAQ_AS_OF, FAQ_SOURCES } from "~/data/faq";
 import { withBase } from "~/lib/url";
 ---
 
@@ -14,11 +14,16 @@ import { withBase } from "~/lib/url";
       <div class="kicker">Pytania i odpowiedzi</div>
       <h1 class="mt-6 max-w-3xl">Najczęściej zadawane pytania</h1>
       <p class="mt-6 max-w-2xl text-lg text-ink-soft leading-relaxed">
-        Odpowiedzi na najczęstsze pytania dotyczące kursu języka polskiego jako
-        <em>spät beginnende Fremdsprache</em> oraz możliwości zdawania z niego matury.
+        Informacje dotyczą planowanego wprowadzenia <strong class="text-ink">polskiego</strong>
+        jako szkolnego przedmiotu <em>„spät beginnende Fremdsprache”</em> w bawarskim
+        Gymnasium G9. Standardowa ścieżka obejmuje klasy 11–13. Istnieje możliwość
+        dołączenia do kursu w klasie 12.
+      </p>
+      <p class="mt-4 max-w-2xl text-ink-soft leading-relaxed">
         Jeżeli nie znajdujesz tu odpowiedzi na swoje pytanie, napisz do nas przez
         <a href={withBase("/kontakt")} class="link">formularz kontaktowy</a>.
       </p>
+      <p class="mt-6 text-sm text-ink-mute">Stan informacji: {FAQ_AS_OF}</p>
     </div>
   </section>
 
@@ -26,6 +31,30 @@ import { withBase } from "~/lib/url";
     <div class="max-w-3xl mx-auto">
       {FAQ.map((item, i) => <FaqItem q={item.q} a={item.a} index={i} />)}
       <div class="border-t border-rule"></div>
+    </div>
+  </section>
+
+  <section id="zrodla" class="border-t border-rule bg-paper-soft">
+    <div class="container-content py-14 md:py-16">
+      <div class="max-w-3xl mx-auto">
+        <div class="kicker">Źródła</div>
+        <p class="mt-4 text-sm text-ink-soft leading-relaxed">
+          Odsyłacze w nawiasach kwadratowych prowadzą do źródeł poniżej. Przepisy GSO
+          i BaySchFG sprawdzono w wersjach obowiązujących od 1 sierpnia 2026 r. Dane
+          lokalne o uruchomieniu kursu wymagają osobnego potwierdzenia.
+        </p>
+        <ol class="mt-6 space-y-2.5 text-sm">
+          {FAQ_SOURCES.map((s) => (
+            <li id={`zrodlo-${s.n}`} class="grid grid-cols-[2.5rem_1fr] gap-2 scroll-mt-6 target:bg-paper-card">
+              <span class="tabular-nums text-ink-mute">[{s.n}]</span>
+              <span class="text-ink-soft leading-relaxed">
+                <span class="text-ink font-medium">{s.publisher}.</span>{" "}
+                <a href={s.url} target="_blank" rel="noopener" class="link">{s.title}</a>
+              </span>
+            </li>
+          ))}
+        </ol>
+      </div>
     </div>
   </section>
 </BaseLayout>

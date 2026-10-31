@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import { CONTACT_EMAIL, CONTACT_MAILTO } from "~/data/contact";
+import { withBase } from "~/lib/url";
+const formPdfHref = withBase("/bekundung-dsgvo.pdf");
 ---
 
 <BaseLayout
@@ -28,20 +30,15 @@ import { CONTACT_EMAIL, CONTACT_MAILTO } from "~/data/contact";
           <li class="grid grid-cols-[auto_1fr] gap-4">
             <span class="tabular-nums font-serif text-2xl text-ink-mute leading-none pt-0.5">01</span>
             <div>
-              <h3 class="font-serif">Pobierz i wypełnij dokument BEKUNDUNG</h3>
+              <h3 class="font-serif">Pobierz i wypełnij formularz BEKUNDUNG</h3>
               <p class="mt-1">
-                Formularz udostępniony w związku z organizacją nauczania języka
-                polskiego w Bawarii. Pobierz i zapoznaj się z jego treścią przed
-                wypełnieniem.
+                Dwustronicowy dokument PDF: deklaracja zainteresowania (BEKUNDUNG)
+                oraz informacja o ochronie danych osobowych (Datenschutz / RODO)
+                ze zgodą na ich przetwarzanie. Wypełnij i podpisz obie strony.
               </p>
-              <a
-                href="https://docs.google.com/document/d/1LZ_K1xkFejwSHDiji96gs2nay2c9FeMk/edit?usp=drive_link&ouid=114917908839007268125&rtpof=true&sd=true"
-                target="_blank"
-                rel="noopener"
-                class="btn btn-quiet mt-3"
-              >
-                Otwórz dokument BEKUNDUNG
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              <a href={formPdfHref} download class="btn btn-quiet mt-3">
+                Pobierz formularz (PDF)
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M6 11l6 6 6-6M4 21h16"/></svg>
               </a>
             </div>
           </li>
@@ -49,29 +46,10 @@ import { CONTACT_EMAIL, CONTACT_MAILTO } from "~/data/contact";
           <li class="grid grid-cols-[auto_1fr] gap-4">
             <span class="tabular-nums font-serif text-2xl text-ink-mute leading-none pt-0.5">02</span>
             <div>
-              <h3 class="font-serif">Wypełnij formularz RODO</h3>
+              <h3 class="font-serif">Wyślij formularz</h3>
               <p class="mt-1">
-                Wymagana zgoda na przetwarzanie danych osobowych ucznia i rodziców
-                — załącz do zgłoszenia.
-              </p>
-              <a
-                href="https://docs.google.com/document/d/1WcxoMiGb5_-48woGvsdshrI3v6s0wdYx/edit?usp=drive_link&ouid=114917908839007268125&rtpof=true&sd=true"
-                target="_blank"
-                rel="noopener"
-                class="btn btn-quiet mt-3"
-              >
-                Otwórz formularz RODO
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg>
-              </a>
-            </div>
-          </li>
-
-          <li class="grid grid-cols-[auto_1fr] gap-4">
-            <span class="tabular-nums font-serif text-2xl text-ink-mute leading-none pt-0.5">03</span>
-            <div>
-              <h3 class="font-serif">Wyślij dokumenty</h3>
-              <p class="mt-1">
-                Prześlij oba dokumenty (BEKUNDUNG oraz RODO) na adres e-mail:
+                Prześlij wypełniony formularz (obie strony) do <strong>22 listopada 2026</strong>
+                na adres e-mail:
               </p>
               <a
                 href={CONTACT_MAILTO}
@@ -89,7 +67,7 @@ import { CONTACT_EMAIL, CONTACT_MAILTO } from "~/data/contact";
         <ul class="mt-4 space-y-4 text-sm">
           <li>
             <div class="text-ink font-medium">Termin zgłoszeń</div>
-            <p class="mt-1 text-ink-mute">Do <strong>listopada 2026</strong>.</p>
+            <p class="mt-1 text-ink-mute">Do <strong>22 listopada 2026</strong>.</p>
           </li>
           <li>
             <div class="text-ink font-medium">Warunek uruchomienia</div>

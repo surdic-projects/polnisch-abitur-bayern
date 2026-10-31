@@ -33,7 +33,6 @@ src/
   pages/                     # jedna strona na plik .astro
     index.astro              # /
     kurs.astro               # /kurs
-    konsulat.astro           # /konsulat
     faq.astro                # /faq
     ulotka.astro             # /ulotka
     rejestracja.astro        # /rejestracja
@@ -43,6 +42,7 @@ src/
   styles/global.css          # Tailwind + własne warstwy
 public/
   ulotka.png                 # ulotka projektu (do pobrania i wydruku)
+  bekundung-dsgvo.pdf        # formularz zgłoszeniowy BEKUNDUNG + Datenschutz
 ```
 
 ## Deploy na GitHub Pages
