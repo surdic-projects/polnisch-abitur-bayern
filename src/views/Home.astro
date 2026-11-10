@@ -1,0 +1,274 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import { path, type Lang } from "~/i18n";
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+
+const pl = {
+  kicker: "Projekt informacyjny · nabór 2026",
+  title: `Język&nbsp;polski jako <span class="italic text-crimson">spät beginnende Fremdsprache</span> w bawarskiej maturze.`,
+  lead: `Kurs języka polskiego jako obcego w bawarskim systemie oświaty, przeznaczony
+    dla uczniów z regionu Nürnberg–Fürth–Erlangen. Prowadzony w klasach 12–13,
+    zakończony możliwością zdawania egzaminu ustnego w ramach niemieckiej matury
+    (Abitur). Kurs jest bezpłatny.`,
+  ctaRegister: "Zgłoś zainteresowanie",
+  ctaCourse: "O kursie",
+  factsTitle: "W skrócie",
+  facts: [
+    { term: "Region", value: "Nürnberg · Fürth · Erlangen" },
+    { term: "Czas trwania", value: "4 semestry · klasa 12–13 (Oberstufe)" },
+    { term: "Zgłoszenia", value: "Uczniowie klas 10–11 (od września 2026)" },
+    { term: "Warunek uruchomienia", value: "Min. 12 osób" },
+    { term: "Koszt", value: "Bezpłatny" },
+    { term: "Organizator", value: "Bayerisches Staatsministerium für Unterricht und Kultus" },
+  ],
+  aboutKicker: "O projekcie",
+  aboutTitle: "Dla kogo powstała ta strona",
+  about: [
+    `Strona informacyjna dotyczy projektu <em>„Kurs języka polskiego do niemieckiej
+    matury dla uczniów z rejonu Nürnberg–Fürth–Erlangen”</em>. Prezentujemy tu
+    informacje merytoryczne oraz kroki potrzebne do zapisania ucznia na dwuletni
+    kurs języka polskiego jako obcego, który umożliwia zdobycie punktów w
+    bawarskiej maturze. Kurs jest częścią oferty Kultusministerium
+    (LehrplanPLUS). Oferta może także objąć uczniów z klasy 11, jeśli
+    będzie zainteresowanie.`,
+    `Strona jest prowadzona przez grupę rodziców z Norymbergi i okolic.
+    Prosimy o kontakt z pytaniami bezpośrednio przez formularz lub adres
+    podany w sekcji <a href="${path("pl", "kontakt")}" class="link">Kontakt</a>.`,
+  ],
+  cards: [
+    {
+      eyebrow: "01 — Co to jest",
+      title: "Późno rozpoczynany język obcy",
+      text: `Kurs funkcjonuje w bawarskim systemie oświaty jako
+        <em>spät beginnende Fremdsprache</em>. Program odpowiada poziomowi
+        innych późno wybieranych języków obcych w bawarskiej maturze.`,
+    },
+    {
+      eyebrow: "02 — Kto może",
+      title: "Uczniowie klas 10–11",
+      text: `Zapraszamy uczniów mieszkających w Norymberdze lub okolicy,
+        uczęszczających do gimnazjum lub FOS, władających językiem polskim
+        na poziomie co najmniej A2. Na kolejne kursy zbieramy zgłoszenia
+        od klas 6–9.`,
+    },
+    {
+      eyebrow: "03 — Co dalej",
+      title: "Punkty do Abitur",
+      text: `Wyniki wchodzą do Block I, a przy opcjonalnym egzaminie ustnym
+        również do Block II. Sposób na formalne wykorzystanie dwujęzyczności
+        w wyniku matury.`,
+    },
+  ],
+  timelineKicker: "Harmonogram",
+  timelineTitle: "Od zgłoszenia do matury",
+  timelineIntro: `Kurs w Norymberdze zostanie uruchomiony, jeżeli do listopada 2026
+    zgłosi się co najmniej 12 chętnych, ale ostateczną decyzję podejmuje
+    Kultusministerium.`,
+  steps: [
+    { year: "2026", when: "wrzesień 2026 – listopad 2026", title: "Zgłoszenie zainteresowania", desc: "Uczniowie wypełniają dokument BEKUNDUNG (wraz ze stroną Datenschutz) i przesyłają na adres e-mail podany w sekcji rejestracji." },
+    { year: "2026", when: "początek grudnia 2026", title: "Weryfikacja liczby zgłoszeń", desc: "Warunkiem uruchomienia grupy jest minimum 12 osób. Ministerstwo wskazuje placówkę szkolną na terenie Norymbergi." },
+    { year: "2027", when: "wrzesień 2027 – czerwiec 2029", title: "Kurs (4 semestry)", desc: `Zajęcia w dzień powszedni po południu, 3 godziny lekcyjne tygodniowo. Program w zakresie późno rozpoczynanego języka obcego, szczegółowe informacje w zakładce <a href="${path("pl", "faq")}" class="link">Pytania</a>.` },
+    { year: "2029", when: "matura 2029", title: "Wynik do Block I (i opcjonalnie Block II)", desc: "Wyniki wchodzą do wyniku Abitur; można zdawać opcjonalny egzamin ustny." },
+  ],
+  nextKicker: "Następny krok",
+  nextTitle: "Zgłoś zainteresowanie kursem",
+  nextText: `Poniżej znajdziesz dokumenty do wypełnienia oraz adres e-mail,
+    na który należy je wysłać.`,
+  nextRegister: "Do rejestracji",
+  nextFaq: "Pytania i odpowiedzi",
+};
+
+const de: typeof pl = {
+  kicker: "Informationsprojekt · Anmeldung 2026",
+  title: `Polnisch als <span class="italic text-crimson">spät beginnende Fremdsprache</span> im bayerischen Abitur.`,
+  lead: `Polnisch als Fremdsprache im bayerischen Schulsystem – ein Unterrichtsangebot
+    für Schülerinnen und Schüler aus der Region Nürnberg–Fürth–Erlangen. Der
+    zweijährige Kurs findet in den Jahrgangsstufen 12 und 13 statt und bietet die
+    Möglichkeit, Polnisch als mündliches Prüfungsfach im Rahmen des deutschen
+    Abiturs zu wählen. Die Teilnahme ist kostenlos.`,
+  ctaRegister: "Interesse bekunden",
+  ctaCourse: "Zum Kurs",
+  factsTitle: "Auf einen Blick",
+  facts: [
+    { term: "Region", value: "Nürnberg · Fürth · Erlangen" },
+    { term: "Dauer", value: "4 Semester · Jahrgangsstufe 12–13 (Oberstufe)" },
+    { term: "Anmeldung", value: "Schülerinnen und Schüler der Jgst. 10–11 (ab September 2026)" },
+    { term: "Voraussetzung für den Start", value: "Mind. 12 Anmeldungen" },
+    { term: "Kosten", value: "Kostenlos" },
+    { term: "Träger", value: "Bayerisches Staatsministerium für Unterricht und Kultus" },
+  ],
+  aboutKicker: "Über das Projekt",
+  aboutTitle: "Für wen ist diese Webseite gedacht?",
+  about: [
+    `Diese Informationsseite widmet sich der Initiative zur Einführung von Polnisch
+    als spät beginnende Fremdsprache im bayerischen Abitur für Schülerinnen und
+    Schüler aus der Region Mittelfranken.`,
+    `Sie informiert über die Rahmenbedingungen, Möglichkeiten und erforderlichen
+    Schritte, um Polnisch als spät beginnende Fremdsprache in die gymnasiale
+    Oberstufe einzubringen und als Abiturfach zu belegen.`,
+    `Die Website wird von einer Elterngruppe aus Nürnberg und Umgebung betrieben.
+    Fragen richten Sie bitte direkt über das Formular oder die im Bereich
+    <a href="${path("de", "kontakt")}" class="link">Kontakt</a> angegebene Adresse an uns.`,
+  ],
+  cards: [
+    {
+      eyebrow: "01 — Was ist das",
+      title: "Spät beginnende Fremdsprache",
+      text: `Der Kurs ist im bayerischen Schulsystem als
+        <em>spät beginnende Fremdsprache</em> verankert. Der Lehrplan entspricht den
+        Anforderungen, die auch für andere spät beginnende Fremdsprachen im Rahmen
+        des bayerischen Abiturs gelten.`,
+    },
+    {
+      eyebrow: "02 — Wer kann teilnehmen",
+      title: "Schülerinnen und Schüler der Jgst. 10 und 11",
+      text: `Wir laden Schülerinnen und Schüler aus Nürnberg und Umgebung, die ein
+        Gymnasium oder eine Fachoberschule (FOS) besuchen und über Polnischkenntnisse
+        mindestens auf dem Sprachniveau A2 verfügen, herzlich dazu ein, ihr Interesse
+        an diesem Kursangebot durch das Ausfüllen und Einreichen einer
+        Interessenbekundung zum Ausdruck zu bringen.<br /><br />
+        Auch für zukünftige Kurse möchten wir frühzeitig das Interesse erfassen. Daher
+        sind Schülerinnen und Schüler der Jahrgangsstufen 6 bis 9 ebenfalls
+        eingeladen, eine Interessenbekundung auszufüllen und einzureichen.`,
+    },
+    {
+      eyebrow: "03 — Was es bringt",
+      title: "Abiturpunkte",
+      text: `Die Leistungen aus dem Kurs fließen in Block I der Abiturqualifikation ein.
+        Bei einer freiwilligen mündlichen Abiturprüfung werden zusätzlich Punkte in
+        Block II erzielt. So lässt sich die Zweisprachigkeit bzw. die gute Kenntnis
+        der Herkunftssprache auch formal in die Abiturnote einbringen.`,
+    },
+  ],
+  timelineKicker: "Zeitplan",
+  timelineTitle: "Von der Anmeldung bis zum Abitur",
+  timelineIntro: `Der Polnischkurs kann eingerichtet werden, wenn eine
+    Mindestteilnehmerzahl von 12 Interessierten sich anmeldet. Die endgültige
+    Entscheidung über die Einrichtung des Kurses trifft jedoch das Bayerische
+    Staatsministerium für Unterricht und Kultus (Kultusministerium).`,
+  steps: [
+    { year: "2026", when: "September 2026 – November 2026", title: "Interessenbekundung", desc: `Die Schülerinnen und Schüler füllen das Formular INTERESSENBEKUNDUNG (einschließlich der Datenschutzerklärung) aus und senden diese an die unter dem Menüpunkt <a href="${path("de", "rejestracja")}" class="link">„Anmeldung“</a> angegebene E-Mail-Adresse.` },
+    { year: "2026", when: "Anfang Dezember 2026", title: "Prüfung der Anmeldezahlen", desc: "Voraussetzung für die Einrichtung einer Kursgruppe ist eine Mindestzahl von 12 Teilnehmenden." },
+    { year: "2027", when: "September 2027 – Juni 2029", title: "Kurs (4 Semester)", desc: `Der Unterricht findet an einem Werktag nachmittags statt und umfasst drei Unterrichtsstunden pro Woche. Der Lehrplan orientiert sich an den Vorgaben für eine spät beginnende Fremdsprache. Weitere Informationen finden Sie im Bereich <a href="${path("de", "faq")}" class="link">„Fragen und Antworten“</a>.` },
+    { year: "2029", when: "Juni 2029", title: "Abitur im Jahr 2029 – Einbringung der Leistungen in Block I (optional auch Block II)", desc: "Die Kursleistungen fließen in die Abiturqualifikation ein und schließen Ende der Q13 mit einer mündlichen Prüfung ab." },
+  ],
+  nextKicker: "Nächster Schritt",
+  nextTitle: "Interesse am Kurs bekunden",
+  nextText: `Auf der Anmeldeseite finden Sie das auszufüllende Formular und die
+    E-Mail-Adresse, an die es gesendet wird.`,
+  nextRegister: "Zur Anmeldung",
+  nextFaq: "Fragen und Antworten",
+};
+
+const t = { pl, de }[lang];
+---
+
+<BaseLayout lang={lang} page="home">
+  <!-- Masthead -->
+  <section class="border-b border-rule">
+    <div class="container-content pt-16 pb-20 md:pt-24 md:pb-28">
+      <div class="grid gap-12 md:grid-cols-12">
+        <div class="md:col-span-8">
+          <div class="kicker">{t.kicker}</div>
+
+          <h1 class="mt-6 font-serif text-4xl md:text-6xl leading-[1.02] tracking-tight" set:html={t.title} />
+
+          <p class="mt-8 max-w-2xl text-lg text-ink-soft leading-relaxed">{t.lead}</p>
+
+          <div class="mt-10 flex flex-wrap gap-3">
+            <a href={path(lang, "rejestracja")} class="btn btn-primary">{t.ctaRegister}</a>
+            <a href={path(lang, "kurs")} class="btn btn-ghost">{t.ctaCourse}</a>
+          </div>
+        </div>
+
+        <aside class="md:col-span-4 md:pl-8 md:border-l md:border-rule">
+          <div class="eyebrow">{t.factsTitle}</div>
+          <dl class="mt-4 space-y-4 text-sm">
+            {t.facts.map(({ term, value }) => (
+              <div>
+                <dt class="text-ink-mute">{term}</dt>
+                <dd class="mt-1 text-ink">{value}</dd>
+              </div>
+            ))}
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Overview -->
+  <section class="container-content py-16 md:py-24">
+    <div class="grid gap-12 md:grid-cols-12">
+      <header class="md:col-span-4">
+        <div class="kicker">{t.aboutKicker}</div>
+        <h2 class="mt-4">{t.aboutTitle}</h2>
+      </header>
+
+      <div class="md:col-span-8 max-w-prose text-ink-soft leading-relaxed space-y-4">
+        {t.about.map((html) => <p set:html={html} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- Three-up: what/who/how -->
+  <section class="border-t border-rule bg-paper-soft">
+    <div class="container-content py-16 md:py-20">
+      <div class="grid gap-6 md:grid-cols-3">
+        {t.cards.map((card) => (
+          <article class="card">
+            <div class="eyebrow">{card.eyebrow}</div>
+            <h3 class="mt-3 font-serif">{card.title}</h3>
+            <p class="mt-3 text-sm text-ink-soft leading-relaxed" set:html={card.text} />
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="container-content py-16 md:py-24">
+    <div class="grid gap-12 md:grid-cols-12">
+      <header class="md:col-span-4">
+        <div class="kicker">{t.timelineKicker}</div>
+        <h2 class="mt-4">{t.timelineTitle}</h2>
+        <p class="mt-4 text-ink-soft leading-relaxed">{t.timelineIntro}</p>
+      </header>
+
+      <ol class="md:col-span-8 space-y-0">
+        {t.steps.map((step) => (
+          <li class="grid grid-cols-[auto_1fr] gap-6 md:gap-10 py-6 border-t border-rule first:border-t-0 md:border-t">
+            <div>
+              <div class="font-serif text-3xl md:text-4xl text-ink-mute tabular-nums leading-none">
+                {step.year}
+              </div>
+              <div class="mt-1 text-[0.72rem] uppercase tracking-[0.12em] text-ink-faint">
+                {step.when}
+              </div>
+            </div>
+            <div>
+              <h3 class="font-serif">{step.title}</h3>
+              <p class="mt-2 text-ink-soft leading-relaxed" set:html={step.desc} />
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="border-t border-rule">
+    <div class="container-content py-14 md:py-16 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+      <div class="max-w-2xl">
+        <div class="kicker">{t.nextKicker}</div>
+        <h2 class="mt-3 font-serif">{t.nextTitle}</h2>
+        <p class="mt-3 text-ink-soft leading-relaxed">{t.nextText}</p>
+      </div>
+      <div class="flex gap-3">
+        <a href={path(lang, "rejestracja")} class="btn btn-primary">{t.nextRegister}</a>
+        <a href={path(lang, "faq")} class="btn btn-ghost">{t.nextFaq}</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

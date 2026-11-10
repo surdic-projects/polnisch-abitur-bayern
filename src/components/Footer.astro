@@ -1,6 +1,12 @@
 ---
 import { withBase } from "~/lib/url";
 import { CONTACT_EMAIL, CONTACT_MAILTO } from "~/data/contact";
+import { path, type Lang } from "~/i18n";
+import { NAV, UI } from "~/i18n/ui";
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const ui = UI[lang];
 const year = new Date().getFullYear();
 const surdicLogo = withBase("/surdic-logo.svg");
 ---
@@ -9,27 +15,21 @@ const surdicLogo = withBase("/surdic-logo.svg");
   <div class="container-content py-10 md:py-14">
     <div class="grid gap-8 md:grid-cols-3">
       <div>
-        <div class="font-serif text-lg font-semibold">Język polski do Abitur</div>
-        <p class="mt-2 text-sm text-ink-soft leading-relaxed max-w-sm">
-          Strona informacyjna dotycząca kursu języka polskiego jako
-          <em>spät beginnende Fremdsprache</em> w bawarskim systemie oświaty,
-          dla uczniów z regionu Nürnberg–Fürth–Erlangen.
-        </p>
+        <div class="font-serif text-lg font-semibold">{ui.brand}</div>
+        <p class="mt-2 text-sm text-ink-soft leading-relaxed max-w-sm" set:html={ui.footer.about} />
       </div>
 
       <div>
-        <div class="eyebrow">Nawigacja</div>
+        <div class="eyebrow">{ui.footer.navTitle}</div>
         <ul class="mt-3 space-y-1.5 text-sm">
-          <li><a href={withBase("/kurs")} class="link">Kurs</a></li>
-          <li><a href={withBase("/faq")} class="link">Pytania i odpowiedzi</a></li>
-          <li><a href={withBase("/ulotka")} class="link">Ulotka kursu</a></li>
-          <li><a href={withBase("/rejestracja")} class="link">Rejestracja / Zgłoszenie</a></li>
-          <li><a href={withBase("/kontakt")} class="link">Kontakt</a></li>
+          {NAV.map((key) => (
+            <li><a href={path(lang, key)} class="link">{ui.footer.nav[key]}</a></li>
+          ))}
         </ul>
       </div>
 
       <div>
-        <div class="eyebrow">Kontakt</div>
+        <div class="eyebrow">{ui.footer.contactTitle}</div>
         <ul class="mt-3 space-y-2 text-sm text-ink-soft">
           <li>
             <a href={CONTACT_MAILTO} class="link break-all">
@@ -50,14 +50,14 @@ const surdicLogo = withBase("/surdic-logo.svg");
   <div class="border-t border-rule">
     <div class="container-content py-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
       <p class="text-xs text-ink-mute leading-relaxed">
-        © {year} Anna Dębska-Kroener · nie jest to strona oficjalna urzędu ani ministerstwa.
+        © {year} Anna Dębska-Kroener · {ui.footer.disclaimer}
       </p>
       <div class="flex items-center gap-4 shrink-0">
         <a
-          href={withBase("/impressum")}
+          href={path(lang, "impressum")}
           class="text-xs text-ink-mute hover:text-ink transition-colors"
         >
-          Impressum
+          {ui.footer.impressum}
         </a>
         <span aria-hidden="true" class="block h-3 w-px bg-rule"></span>
         <a

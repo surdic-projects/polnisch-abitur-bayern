@@ -1,0 +1,29 @@
+---
+import { LANGS, LANG_LABELS, path, type Lang, type PageKey } from "~/i18n";
+import { UI } from "~/i18n/ui";
+
+interface Props { lang: Lang; page: PageKey; }
+const { lang, page } = Astro.props;
+---
+
+<nav aria-label={UI[lang].langSwitch}>
+  <ul class="flex border border-rule text-[0.72rem] font-medium tracking-[0.12em]">
+    {LANGS.map((l) => (
+      <li class="border-l border-rule first:border-l-0">
+        <a
+          href={path(l, page)}
+          hreflang={l}
+          lang={l}
+          aria-label={LANG_LABELS[l].name}
+          aria-current={l === lang ? "true" : undefined}
+          class:list={[
+            "block px-2 py-1.5 sm:px-2.5 transition-colors",
+            l === lang ? "bg-ink text-paper" : "text-ink-soft hover:text-ink",
+          ]}
+        >
+          {LANG_LABELS[l].short}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>

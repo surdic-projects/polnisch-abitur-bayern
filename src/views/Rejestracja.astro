@@ -1,0 +1,127 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import { CONTACT_EMAIL, CONTACT_MAILTO } from "~/data/contact";
+import { withBase } from "~/lib/url";
+import { type Lang } from "~/i18n";
+import { UI } from "~/i18n/ui";
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+
+// The form is German-only, so both languages link the same file.
+const formPdfHref = withBase("/bekundung-dsgvo.pdf");
+
+const pl = {
+  title: "Rejestracja / Zgłoszenie — Język polski do Abitur — Bawaria",
+  kicker: "Rejestracja",
+  heading: "Zgłoszenie zainteresowania kursem",
+  lead: `Zgłoszenia uczniów zainteresowanych kursem języka polskiego do matury
+    w danym regionie odbywają się przez przesłanie wypełnionego formularza
+    na adres e-mail.`,
+  howTitle: "Jak zgłosić zainteresowanie",
+  formTitle: "Pobierz i wypełnij formularz BEKUNDUNG",
+  formText: `Dwustronicowy dokument PDF: deklaracja zainteresowania (BEKUNDUNG)
+    oraz informacja o ochronie danych osobowych (Datenschutz / RODO)
+    ze zgodą na ich przetwarzanie. Wypełnij i podpisz obie strony.`,
+  formButton: "Pobierz formularz (PDF)",
+  sendTitle: "Wyślij formularz",
+  sendText: `Prześlij wypełniony formularz (obie strony) do <strong>22 listopada 2026</strong>
+    na adres e-mail:`,
+  asideTitle: "Termin i warunki",
+  conditions: [
+    { title: "Termin zgłoszeń", text: "Do <strong>22 listopada 2026</strong>." },
+    {
+      title: "Warunek uruchomienia",
+      text: "Minimum <strong>12 osób</strong> — wtedy ministerstwo wskazuje szkołę w Norymberdze.",
+    },
+    { title: "Start zajęć", text: "Rok szkolny <strong>2027/2028</strong>." },
+  ],
+};
+
+const de: typeof pl = {
+  title: `Anmeldung — ${UI.de.meta.titleSuffix}`,
+  kicker: "Anmeldung",
+  heading: "Interessenbekundung für den Kurs",
+  lead: `Schülerinnen und Schüler, die sich für den Polnischkurs fürs Abitur
+    interessieren, melden sich an, indem sie das ausgefüllte Formular per
+    E-Mail senden.`,
+  howTitle: "So bekunden Sie Ihr Interesse",
+  formTitle: "Formular BEKUNDUNG herunterladen und ausfüllen",
+  formText: `Zweiseitiges PDF-Dokument: Interessenbekundung (BEKUNDUNG) sowie
+    Datenschutzerklärung mit Einwilligung in die Datenverarbeitung. Bitte beide
+    Seiten ausfüllen und unterschreiben.`,
+  formButton: "Formular herunterladen (PDF)",
+  sendTitle: "Formular senden",
+  sendText: `Senden Sie das ausgefüllte Formular (beide Seiten) bis zum
+    <strong>22. November 2026</strong> an:`,
+  asideTitle: "Frist und Voraussetzungen",
+  conditions: [
+    { title: "Anmeldefrist", text: "Bis <strong>22. November 2026</strong>." },
+    {
+      title: "Voraussetzung für den Start",
+      text: "Mindestens <strong>12 Teilnehmende</strong> – dann bestimmt das Ministerium eine Schule in Nürnberg.",
+    },
+    { title: "Unterrichtsbeginn", text: "Schuljahr <strong>2027/2028</strong>." },
+  ],
+};
+
+const t = { pl, de }[lang];
+---
+
+<BaseLayout lang={lang} page="rejestracja" title={t.title}>
+  <section class="border-b border-rule">
+    <div class="container-content pt-16 pb-14 md:pt-24 md:pb-16">
+      <div class="kicker">{t.kicker}</div>
+      <h1 class="mt-6 max-w-4xl">{t.heading}</h1>
+      <p class="mt-6 max-w-2xl text-lg text-ink-soft leading-relaxed">{t.lead}</p>
+    </div>
+  </section>
+
+  <section class="container-content py-16 md:py-20">
+    <div class="grid gap-12 md:grid-cols-12">
+      <article class="md:col-span-8 max-w-prose prose-serif">
+        <h2 class="font-serif">{t.howTitle}</h2>
+
+        <ol class="mt-6 space-y-6 list-none pl-0">
+          <li class="grid grid-cols-[auto_1fr] gap-4">
+            <span class="tabular-nums font-serif text-2xl text-ink-mute leading-none pt-0.5">01</span>
+            <div>
+              <h3 class="font-serif">{t.formTitle}</h3>
+              <p class="mt-1">{t.formText}</p>
+              <a href={formPdfHref} download class="btn btn-quiet mt-3">
+                {t.formButton}
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M6 11l6 6 6-6M4 21h16"/></svg>
+              </a>
+            </div>
+          </li>
+
+          <li class="grid grid-cols-[auto_1fr] gap-4">
+            <span class="tabular-nums font-serif text-2xl text-ink-mute leading-none pt-0.5">02</span>
+            <div>
+              <h3 class="font-serif">{t.sendTitle}</h3>
+              <p class="mt-1" set:html={t.sendText} />
+              <a
+                href={CONTACT_MAILTO}
+                class="link mt-2 inline-block font-medium"
+              >
+                {CONTACT_EMAIL}
+              </a>
+            </div>
+          </li>
+        </ol>
+      </article>
+
+      <aside class="md:col-span-4 md:pl-8 md:border-l md:border-rule">
+        <div class="eyebrow">{t.asideTitle}</div>
+        <ul class="mt-4 space-y-4 text-sm">
+          {t.conditions.map((c) => (
+            <li>
+              <div class="text-ink font-medium">{c.title}</div>
+              <p class="mt-1 text-ink-mute" set:html={c.text} />
+            </li>
+          ))}
+        </ul>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>

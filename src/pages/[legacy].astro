@@ -1,0 +1,17 @@
+---
+import Redirect from "~/components/Redirect.astro";
+import { PAGE_KEYS, PAGES, path, type PageKey } from "~/i18n";
+
+// Before the language split, pages lived at /kurs, /faq, … in Polish.
+// Keep those links working by redirecting to the /pl/ versions.
+export function getStaticPaths() {
+  return PAGE_KEYS.filter((page) => PAGES[page].pl).map((page) => ({
+    params: { legacy: PAGES[page].pl },
+    props: { page },
+  }));
+}
+
+const { page } = Astro.props as { page: PageKey };
+---
+
+<Redirect to={path("pl", page)} />

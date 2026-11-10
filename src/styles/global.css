@@ -22,6 +22,9 @@
   h1, h2, h3, h4 {
     @apply font-serif text-ink;
     font-feature-settings: "onum";
+    /* Long German compounds (e.g. "Interessenbekundung") overflow narrow phones */
+    overflow-wrap: break-word;
+    hyphens: auto;
   }
 
   h1 { @apply text-4xl md:text-5xl leading-[1.08] tracking-tight font-semibold; }

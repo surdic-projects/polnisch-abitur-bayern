@@ -1,15 +1,21 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import { CONTACT_EMAIL, CONTACT_MAILTO } from "~/data/contact";
+import { type Lang } from "~/i18n";
+import { UI } from "~/i18n/ui";
+
+// German legal notice; shown untranslated on the Polish site as well.
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
 ---
 
 <BaseLayout
-  active="impressum"
-  lang="de"
-  title="Impressum — Język polski do Abitur — Bawaria"
+  lang={lang}
+  page="impressum"
+  title={`Impressum — ${UI[lang].meta.titleSuffix}`}
   description="Impressum gemäß § 5 DDG. Angaben zur Verantwortlichen dieser Website."
 >
-  <section class="border-b border-rule">
+  <section lang="de" class="border-b border-rule">
     <div class="container-content pt-16 pb-14 md:pt-24 md:pb-16">
       <div class="kicker">Rechtliches</div>
       <h1 class="mt-6 max-w-3xl">Impressum</h1>
@@ -19,7 +25,7 @@ import { CONTACT_EMAIL, CONTACT_MAILTO } from "~/data/contact";
     </div>
   </section>
 
-  <section class="container-content py-16 md:py-20">
+  <section lang="de" class="container-content py-16 md:py-20">
     <div class="max-w-prose space-y-12 text-ink-soft leading-relaxed">
       <div>
         <h2 class="font-serif text-ink">Verantwortlich für diese Website</h2>

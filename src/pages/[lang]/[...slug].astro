@@ -1,0 +1,35 @@
+---
+import { LANGS, PAGE_KEYS, PAGES, type Lang, type PageKey } from "~/i18n";
+import Home from "~/views/Home.astro";
+import Kurs from "~/views/Kurs.astro";
+import Faq from "~/views/Faq.astro";
+import Ulotka from "~/views/Ulotka.astro";
+import Rejestracja from "~/views/Rejestracja.astro";
+import Kontakt from "~/views/Kontakt.astro";
+import Impressum from "~/views/Impressum.astro";
+
+// Every page × every language, with slugs from PAGES (src/i18n/index.ts).
+export function getStaticPaths() {
+  return LANGS.flatMap((lang) =>
+    PAGE_KEYS.map((page) => ({
+      params: { lang, slug: PAGES[page][lang] || undefined },
+      props: { lang, page },
+    })),
+  );
+}
+
+const VIEWS = {
+  home: Home,
+  kurs: Kurs,
+  faq: Faq,
+  ulotka: Ulotka,
+  rejestracja: Rejestracja,
+  kontakt: Kontakt,
+  impressum: Impressum,
+} satisfies Record<PageKey, unknown>;
+
+const { lang, page } = Astro.props as { lang: Lang; page: PageKey };
+const View = VIEWS[page];
+---
+
+<View lang={lang} />

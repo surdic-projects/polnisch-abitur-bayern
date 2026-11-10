@@ -1,14 +1,9 @@
 ---
-import { withBase } from "~/lib/url";
-
+// Answers are HTML strings from src/data/faq.ts; internal links in them
+// should be built with path() from ~/i18n so they carry the base path.
 interface Props { q: string; a: string; index: number; }
 const { q, a, index } = Astro.props;
 const num = String(index + 1).padStart(2, "0");
-
-// Rewrite in-content absolute links (href="/foo") so they respect the
-// deploy base path — needed because FAQ answers are authored as HTML strings
-// in src/data/faq.ts and can't call withBase() themselves.
-const answerHtml = a.replace(/href="(\/[^"#][^"]*)"/g, (_m, p) => `href="${withBase(p)}"`);
 ---
 
 <details class="group border-t border-rule py-5 md:py-6">
@@ -35,6 +30,6 @@ const answerHtml = a.replace(/href="(\/[^"#][^"]*)"/g, (_m, p) => `href="${withB
            [&_strong]:text-ink [&_strong]:font-semibold
            [&_em]:text-ink [&_em]:italic
            [&_sup]:text-[0.7em] [&_sup]:text-ink-mute [&_sup]:whitespace-nowrap [&_sup_a]:no-underline"
-    set:html={answerHtml}
+    set:html={a}
   />
 </details>

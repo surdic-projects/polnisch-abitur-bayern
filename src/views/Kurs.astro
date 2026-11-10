@@ -1,0 +1,168 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import { path, type Lang } from "~/i18n";
+import { UI } from "~/i18n/ui";
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+
+const pl = {
+  title: "Kurs — Język polski do niemieckiej matury (Abitur) — Bawaria",
+  kicker: "Kurs",
+  heading: "Późno rozpoczynany język obcy w bawarskiej maturze — na przykładzie języka polskiego.",
+  lead: `Kurs języka polskiego jako obcego funkcjonuje w bawarskim systemie oświaty
+    w ramach tzw. <em>spät beginnende Fremdsprache</em>. Od kilku lat prowadzony
+    jest w Monachium. W roku szkolnym <strong>2027/2028</strong> możliwe jest
+    uruchomienie nowego kursu w Norymberdze.`,
+  factsTitle: "Podstawowe informacje",
+  facts: [
+    { term: "Poziom w systemie", value: "Spät beginnende Fremdsprache" },
+    { term: "Długość", value: "4 semestry (2 lata)" },
+    { term: "Klasa startowa", value: "Klasa 12 (Oberstufe)" },
+    { term: "Wymagany poziom PL", value: "min. A2" },
+    { term: "Egzamin ustny", value: "Opcjonalny" },
+    { term: "Koszt", value: "Bezpłatny" },
+  ],
+  sections: [
+    {
+      heading: "Charakterystyka kursu",
+      paragraphs: [
+        `Kurs <em>„Polnisch als spät beginnende Fremdsprache”</em> w wersji dwuletniej
+        (4 semestry) rozpoczyna się w klasie 12 tzw. Oberstufe. Wymaga znajomości
+        języka polskiego przynajmniej na poziomie A2.
+        Ma formę cotygodniowych zajęć trwających kilka godzin lekcyjnych. Program
+        kursu odpowiada poziomowi innych późno wybranych języków obcych w bawarskim
+        systemie matury.`,
+        `Po ukończeniu kursu istnieje możliwość zdawania egzaminu ustnego z języka
+        polskiego w ramach niemieckiej matury. Egzamin jest opcjonalny — można
+        poprzestać na samym dwuletnim kursie.`,
+      ],
+    },
+    {
+      heading: "Dlaczego warto",
+      paragraphs: [
+        `Kurs języka polskiego do niemieckiej matury to praktyczna droga wykorzystania
+        dwujęzyczności lub dobrej znajomości języka rodziców jako formalnie uznanego
+        przedmiotu szkolnego, wchodzącego do wyniku Abitur.`,
+      ],
+    },
+    {
+      heading: "Dla kogo",
+      paragraphs: [
+        `Zapraszamy uczniów, którzy planują zdawać niemiecką maturę, mieszkają
+        w Norymberdze lub okolicach, władają językiem ojczystym na poziomie
+        co najmniej <strong>A2</strong> i uczęszczają do klasy 10 lub 11 gimnazjum
+        albo FOS. Uczniowie z klas 6–9 też mogą się zgłaszać, ponieważ kurs ma być
+        cykliczny i będziemy prowadzić nabór co roku.`,
+      ],
+    },
+  ],
+  ctaRegister: "Przejdź do rejestracji",
+  ctaFaq: "Zobacz najczęściej zadawane pytania",
+};
+
+const de: typeof pl = {
+  title: `Kurs — ${UI.de.meta.titleSuffix}`,
+  kicker: "Kurs",
+  heading: "Spät beginnende Fremdsprache im bayerischen Abitur – am Beispiel Polnisch.",
+  lead: `Polnisch als Fremdsprache ist im bayerischen Schulsystem als sogenannte
+    <em>spät beginnende Fremdsprache</em> verankert. In München wird der Kurs
+    bereits seit einigen Jahren angeboten. Im Schuljahr <strong>2027/2028</strong>
+    könnte ein neuer Kurs in Nürnberg starten.`,
+  factsTitle: "Das Wichtigste",
+  facts: [
+    { term: "Einordnung", value: "Spät beginnende Fremdsprache" },
+    { term: "Dauer", value: "4 Semester (2 Jahre)" },
+    { term: "Beginn", value: "Jahrgangsstufe 12 (Oberstufe)" },
+    { term: "Polnischkenntnisse", value: "mind. A2" },
+    { term: "Mündliche Prüfung", value: "Optional" },
+    { term: "Kosten", value: "Kostenlos" },
+  ],
+  sections: [
+    {
+      heading: "Kursbeschreibung",
+      paragraphs: [
+        `Der viersemestrige Kurs <em>„Polnisch als spät beginnende Fremdsprache“</em>
+        beginnt in Jahrgangsstufe 12 der gymnasialen Oberstufe. Voraussetzung sind
+        Polnischkenntnisse mindestens auf dem Niveau A2.`,
+        `Der Unterricht findet wöchentlich statt und umfasst mehrere
+        Unterrichtsstunden. Der Lehrplan entspricht den Anforderungen, die auch für
+        andere spät beginnende Fremdsprachen im bayerischen Abitur gelten.
+        Link: <a href="https://www.lehrplanplus.bayern.de/fachprofil/gymnasium/pln/auspraegung/polnisch/13" target="_blank" rel="noopener" class="link">LehrplanPLUS.bayern.de</a>`,
+        `Nach Abschluss des Kurses besteht die Möglichkeit, eine mündliche Prüfung in
+        Polnisch abzulegen. Diese Prüfung ist freiwillig – der zweijährige Kurs kann
+        auch ohne anschließende Abiturprüfung absolviert werden.`,
+      ],
+    },
+    {
+      heading: "Warum lohnt sich die Teilnahme?",
+      paragraphs: [
+        `Der Polnischkurs mit dem Ziel, Polnisch als Abiturfach einzubringen, eröffnet
+        Schülerinnen und Schülern eine wertvolle Möglichkeit, ihre Mehrsprachigkeit und
+        ihre vorhandenen Sprachkenntnisse gezielt zu nutzen und schulisch anerkennen
+        zu lassen.`,
+        `Insbesondere bietet der Kurs die Chance, die eigene Zweisprachigkeit oder
+        fundierte Kenntnisse der elterlichen Herkunftssprache als reguläres, offiziell
+        anerkanntes Schulfach in die bayerische Abiturqualifikation einzubringen und
+        damit die persönlichen Bildungswege um eine wertvolle Perspektive zu
+        erweitern.`,
+      ],
+    },
+    {
+      heading: "Für wen",
+      paragraphs: [
+        `Wir laden Schülerinnen und Schüler ein, die das deutsche Abitur anstreben, in
+        Nürnberg oder Umgebung wohnen, Polnisch mindestens auf Niveau
+        <strong>A2</strong> beherrschen und die Jahrgangsstufe 10 oder 11 eines
+        Gymnasiums oder einer Fachoberschule (FOS) besuchen. Auch Schülerinnen und
+        Schüler der Jahrgangsstufen 6 bis 9 können sich bereits melden, da der Kurs
+        regelmäßig stattfinden soll und wir jedes Jahr Anmeldungen sammeln.`,
+      ],
+    },
+  ],
+  ctaRegister: "Zur Anmeldung",
+  ctaFaq: "Häufige Fragen ansehen",
+};
+
+const t = { pl, de }[lang];
+---
+
+<BaseLayout lang={lang} page="kurs" title={t.title}>
+  <section class="border-b border-rule">
+    <div class="container-content pt-16 pb-14 md:pt-24 md:pb-16">
+      <div class="kicker">{t.kicker}</div>
+      <h1 class="mt-6 max-w-4xl">{t.heading}</h1>
+      <p class="mt-6 max-w-2xl text-lg text-ink-soft leading-relaxed" set:html={t.lead} />
+    </div>
+  </section>
+
+  <section class="container-content py-16 md:py-20">
+    <div class="grid gap-12 md:grid-cols-12">
+      <aside class="md:col-span-4">
+        <div class="eyebrow">{t.factsTitle}</div>
+        <dl class="mt-4 divide-y divide-rule border-y border-rule">
+          {t.facts.map(({ term, value }) => (
+            <div class="py-3 flex justify-between gap-6">
+              <dt class="text-ink-mute text-sm">{term}</dt>
+              <dd class="text-ink text-sm text-right">{value}</dd>
+            </div>
+          ))}
+        </dl>
+      </aside>
+
+      <article class="md:col-span-8 prose-serif max-w-prose">
+        {t.sections.map((section, i) => (
+          <>
+            <h2 class:list={["font-serif", { "mt-10": i > 0 }]}>{section.heading}</h2>
+            {section.paragraphs.map((html) => <p set:html={html} />)}
+          </>
+        ))}
+
+        <div class="mt-10 flex flex-wrap gap-3">
+          <a href={path(lang, "rejestracja")} class="btn btn-primary">{t.ctaRegister}</a>
+          <a href={path(lang, "faq")} class="btn btn-ghost">{t.ctaFaq}</a>
+        </div>
+      </article>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,143 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import { CONTACT_EMAIL, CONTACT_MAILTO } from "~/data/contact";
+import { type Lang } from "~/i18n";
+import { UI } from "~/i18n/ui";
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+
+// `field` values become the labels in the generated e-mail body.
+const pl = {
+  title: "Kontakt — Język polski do Abitur — Bawaria",
+  kicker: "Kontakt",
+  heading: "Napisz do nas",
+  lead: `Zapraszamy do kontaktu przez formularz kontaktowy lub bezpośrednio
+    na adres e-mail.`,
+  emailTitle: "Adres e-mail",
+  regionTitle: "Region",
+  socialTitle: "Media społecznościowe",
+  facebookPending: "(w przygotowaniu)",
+  name: { label: "Imię i nazwisko", field: "Imię" },
+  email: { label: "Adres e-mail", field: "E-mail" },
+  message: { label: "Wiadomość", field: "Wiadomość" },
+  formNote: `Formularz otwiera domyślnego klienta pocztowego z gotową treścią wiadomości.
+    Alternatywnie prosimy o wysłanie e-maila bezpośrednio na podany adres.`,
+  submit: "Wyślij wiadomość",
+};
+
+const de: typeof pl = {
+  title: `Kontakt — ${UI.de.meta.titleSuffix}`,
+  kicker: "Kontakt",
+  heading: "Schreiben Sie uns",
+  lead: "Sie erreichen uns über das Kontaktformular oder direkt per E-Mail.",
+  emailTitle: "E-Mail-Adresse",
+  regionTitle: "Region",
+  socialTitle: "Soziale Medien",
+  facebookPending: "(in Vorbereitung)",
+  name: { label: "Name", field: "Name" },
+  email: { label: "E-Mail-Adresse", field: "E-Mail" },
+  message: { label: "Nachricht", field: "Nachricht" },
+  formNote: `Das Formular öffnet Ihr E-Mail-Programm mit der vorbereiteten Nachricht.
+    Alternativ können Sie uns direkt an die angegebene Adresse schreiben.`,
+  submit: "Nachricht senden",
+};
+
+const t = { pl, de }[lang];
+---
+
+<BaseLayout lang={lang} page="kontakt" title={t.title}>
+  <section class="border-b border-rule">
+    <div class="container-content pt-16 pb-14 md:pt-24 md:pb-16">
+      <div class="kicker">{t.kicker}</div>
+      <h1 class="mt-6 max-w-3xl">{t.heading}</h1>
+      <p class="mt-6 max-w-2xl text-lg text-ink-soft leading-relaxed">{t.lead}</p>
+    </div>
+  </section>
+
+  <section class="container-content py-16 md:py-20">
+    <div class="grid gap-12 md:grid-cols-12">
+      <aside class="md:col-span-4 space-y-8">
+        <div>
+          <div class="eyebrow">{t.emailTitle}</div>
+          <a
+            href={CONTACT_MAILTO}
+            class="mt-3 block font-serif text-lg link break-all"
+          >
+            {CONTACT_EMAIL}
+          </a>
+        </div>
+
+        <div>
+          <div class="eyebrow">{t.regionTitle}</div>
+          <p class="mt-3 text-ink">Nürnberg · Fürth · Erlangen</p>
+        </div>
+
+        <div>
+          <div class="eyebrow">{t.socialTitle}</div>
+          <ul class="mt-3 space-y-1.5 text-sm">
+            <li>
+              Instagram:
+              <a
+                href="https://www.instagram.com/polnisch_abi/"
+                target="_blank"
+                rel="noopener"
+                class="link"
+              >
+                @polnisch_abi
+              </a>
+            </li>
+            <li>
+              Facebook:
+              <span class="text-ink-mute">{t.facebookPending}</span>
+            </li>
+          </ul>
+        </div>
+      </aside>
+
+      <form
+        class="md:col-span-8 border border-rule bg-paper-card p-6 md:p-8 space-y-5"
+        method="post"
+        action={CONTACT_MAILTO}
+        enctype="text/plain"
+      >
+        <div>
+          <label for="name" class="block text-sm font-medium">{t.name.label}</label>
+          <input
+            id="name"
+            name={t.name.field}
+            type="text"
+            required
+            autocomplete="name"
+            class="mt-2 block w-full border border-rule bg-paper px-3 py-2.5 text-[0.95rem] focus:outline-none focus:border-ink"
+          />
+        </div>
+        <div>
+          <label for="email" class="block text-sm font-medium">{t.email.label}</label>
+          <input
+            id="email"
+            name={t.email.field}
+            type="email"
+            required
+            autocomplete="email"
+            class="mt-2 block w-full border border-rule bg-paper px-3 py-2.5 text-[0.95rem] focus:outline-none focus:border-ink"
+          />
+        </div>
+        <div>
+          <label for="message" class="block text-sm font-medium">{t.message.label}</label>
+          <textarea
+            id="message"
+            name={t.message.field}
+            rows="6"
+            required
+            class="mt-2 block w-full border border-rule bg-paper px-3 py-2.5 text-[0.95rem] focus:outline-none focus:border-ink resize-y"
+          ></textarea>
+        </div>
+        <div class="flex flex-wrap items-center justify-between gap-4 pt-2">
+          <p class="text-xs text-ink-mute max-w-md">{t.formNote}</p>
+          <button type="submit" class="btn btn-primary">{t.submit}</button>
+        </div>
+      </form>
+    </div>
+  </section>
+</BaseLayout>

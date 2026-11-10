@@ -1,84 +1,83 @@
 ---
-import { withBase } from "~/lib/url";
+import LangSwitch from "~/components/LangSwitch.astro";
+import { path, type Lang, type PageKey } from "~/i18n";
+import { NAV, UI } from "~/i18n/ui";
 
-interface Props {
-  active?: "home" | "kurs" | "faq" | "ulotka" | "rejestracja" | "kontakt" | "impressum";
-}
-const { active = "home" } = Astro.props;
+interface Props { lang: Lang; page: PageKey; }
+const { lang, page } = Astro.props;
+const ui = UI[lang];
 
-const nav = [
-  { href: "/kurs",         label: "Kurs",           key: "kurs" },
-  { href: "/faq",          label: "Pytania",        key: "faq" },
-  { href: "/ulotka",       label: "Ulotka",         key: "ulotka" },
-  { href: "/rejestracja",  label: "Rejestracja",    key: "rejestracja" },
-  { href: "/kontakt",      label: "Kontakt",        key: "kontakt" },
-] as const;
+const nav = NAV.map((key) => ({ key, href: path(lang, key), label: ui.nav[key] }));
 ---
 
 <header class="border-b border-rule bg-paper">
-  <div class="container-content flex items-center justify-between py-4 md:py-5">
-    <a href={withBase("/")} class="flex items-center gap-3 group" aria-label="Strona główna">
+  <div class="container-content flex items-center justify-between gap-4 py-4 md:py-5">
+    <a href={path(lang, "home")} class="flex min-w-0 items-center gap-3 group" aria-label={ui.homeLabel}>
       <span
         aria-hidden="true"
-        class="block h-5 w-8 border border-ink"
+        class="block h-5 w-8 shrink-0 border border-ink"
         style="background: linear-gradient(#fff 50%, #8a1c2b 50%);"
       ></span>
       <span class="flex flex-col leading-tight">
         <span class="font-serif text-[0.98rem] font-semibold tracking-tight">
-          Język polski do Abitur
+          {ui.brand}
         </span>
         <span class="text-[0.72rem] uppercase tracking-[0.14em] text-ink-mute">
-          Bawaria · Nürnberg–Fürth–Erlangen
+          {ui.region}
         </span>
       </span>
     </a>
 
-    <nav aria-label="Menu główne" class="hidden md:block">
-      <ul class="flex items-center gap-1">
-        {nav.map(({ href, label, key }) => (
-          <li>
-            <a
-              href={withBase(href)}
-              class:list={[
-                "px-3 py-2 text-[0.92rem] transition-colors",
-                active === key
-                  ? "text-ink underline decoration-crimson decoration-2 underline-offset-[10px]"
-                  : "text-ink-soft hover:text-ink",
-              ]}
-              aria-current={active === key ? "page" : undefined}
-            >
-              {label}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <div class="flex shrink-0 items-center gap-2 sm:gap-3 md:gap-4">
+      <nav aria-label={ui.mainNav} class="hidden md:block">
+        <ul class="flex items-center gap-1">
+          {nav.map(({ href, label, key }) => (
+            <li>
+              <a
+                href={href}
+                class:list={[
+                  "px-3 py-2 text-[0.92rem] transition-colors",
+                  page === key
+                    ? "text-ink underline decoration-crimson decoration-2 underline-offset-[10px]"
+                    : "text-ink-soft hover:text-ink",
+                ]}
+                aria-current={page === key ? "page" : undefined}
+              >
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
 
-    <details class="md:hidden relative">
-      <summary
-        class="list-none inline-flex items-center gap-2 border border-rule px-3 py-2 text-sm cursor-pointer marker:content-none"
-        aria-label="Otwórz menu"
-      >
-        Menu
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </summary>
-      <ul class="absolute right-0 top-full mt-2 min-w-[220px] border border-rule bg-paper-card shadow-sm z-40">
-        {nav.map(({ href, label, key }) => (
-          <li>
-            <a
-              href={withBase(href)}
-              class:list={[
-                "block px-4 py-3 text-sm border-b border-rule last:border-b-0",
-                active === key ? "text-ink font-medium" : "text-ink-soft hover:text-ink",
-              ]}
-            >
-              {label}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </details>
+      <LangSwitch lang={lang} page={page} />
+
+      <details class="md:hidden relative">
+        <summary
+          class="list-none inline-flex items-center gap-2 border border-rule px-2.5 py-2 sm:px-3 text-sm cursor-pointer marker:content-none"
+          aria-label={ui.openMenu}
+        >
+          <span class="hidden sm:inline">{ui.menu}</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </summary>
+        <ul class="absolute right-0 top-full mt-2 min-w-[220px] border border-rule bg-paper-card shadow-sm z-40">
+          {nav.map(({ href, label, key }) => (
+            <li>
+              <a
+                href={href}
+                class:list={[
+                  "block px-4 py-3 text-sm border-b border-rule last:border-b-0",
+                  page === key ? "text-ink font-medium" : "text-ink-soft hover:text-ink",
+                ]}
+              >
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </details>
+    </div>
   </div>
 </header>

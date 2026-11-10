@@ -28,22 +28,47 @@ npm run preview  # podgląd zbudowanej wersji
 
 ```
 src/
-  layouts/BaseLayout.astro   # wspólny layout HTML
-  components/                # Header, Footer, FaqItem
-  pages/                     # jedna strona na plik .astro
-    index.astro              # /
-    kurs.astro               # /kurs
-    faq.astro                # /faq
-    ulotka.astro             # /ulotka
-    rejestracja.astro        # /rejestracja
-    kontakt.astro            # /kontakt
-  data/faq.ts                # treść pytań i odpowiedzi
+  i18n/index.ts              # języki, mapa stron i adresów (PAGES), helper `path()`
+  i18n/ui.ts                 # wspólne teksty interfejsu (menu, stopka) PL/DE
+  views/                     # szablony stron; teksty PL i DE obok siebie
+    Home.astro, Kurs.astro, Faq.astro, Ulotka.astro,
+    Rejestracja.astro, Kontakt.astro, Impressum.astro
+  pages/
+    [lang]/[...slug].astro   # generuje /pl/… i /de/… dla każdej strony
+    index.astro              # / → przekierowanie na /pl/
+    [legacy].astro           # stare adresy (/kurs, /faq, …) → /pl/…
+  layouts/BaseLayout.astro   # wspólny layout HTML (lang, hreflang)
+  components/                # Header, Footer, LangSwitch, FaqItem, Redirect
+  data/faq.ts                # pytania i odpowiedzi PL/DE + źródła
   lib/url.ts                 # helper `withBase()` dla ścieżek
   styles/global.css          # Tailwind + własne warstwy
 public/
-  ulotka.png                 # ulotka projektu (do pobrania i wydruku)
+  ulotka.png, ulotka.pdf     # ulotka projektu (dwujęzyczna)
   bekundung-dsgvo.pdf        # formularz zgłoszeniowy BEKUNDUNG + Datenschutz
 ```
+
+## Języki
+
+Strona jest dostępna po polsku (`/pl/…`, domyślnie) i po niemiecku (`/de/…`).
+Przełącznik PL/DE w nagłówku prowadzi do tej samej strony w drugim języku.
+
+| Strona      | PL                 | DE               |
+|-------------|--------------------|------------------|
+| Start       | `/pl/`             | `/de/`           |
+| Kurs        | `/pl/kurs`         | `/de/kurs`       |
+| Pytania     | `/pl/faq`          | `/de/faq`        |
+| Ulotka      | `/pl/ulotka`       | `/de/flyer`      |
+| Rejestracja | `/pl/rejestracja`  | `/de/anmeldung`  |
+| Kontakt     | `/pl/kontakt`      | `/de/kontakt`    |
+| Impressum   | `/pl/impressum`    | `/de/impressum`  |
+
+- **Zmiana tekstu:** w `src/views/<Strona>.astro` obiekt `pl` i obiekt `de`
+  stoją obok siebie; `de` ma typ `typeof pl`, więc edytor podpowie brakujące pola.
+- **Linki wewnętrzne** zawsze przez `path(lang, "kontakt")` z `~/i18n` —
+  nigdy wpisane na sztywno.
+- **Nowa strona:** dodaj wpis w `PAGES` (`src/i18n/index.ts`), widok w
+  `src/views/` i wpis w `VIEWS` w `src/pages/[lang]/[...slug].astro`.
+- Impressum jest tylko po niemiecku (również na `/pl/impressum`).
 
 ## Deploy na GitHub Pages
 
